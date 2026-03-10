@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="StreamVerde — Cloud-native IPTV platform delivering Live TV, VOD, Catch-up TV, Cloud DVR, AI recommendations and full operator management.">
+  <meta name="description"
+    content="StreamVerde — Cloud-native IPTV platform delivering Live TV, VOD, Catch-up TV, Cloud DVR, AI recommendations and full operator management.">
   <meta name="keywords" content="IPTV, streaming, live TV, VOD, OTT, middleware, cloud DVR">
   <title>StreamVerde — IPTV Platform</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Shared design tokens -->
   <link rel="stylesheet" href="../shared/css/tokens.css">
@@ -21,844 +25,949 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/layout.css">
 </head>
+
 <body>
 
-<div class="bg-orbs">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-</div>
-
-<!-- ======== NAVBAR ======== -->
-<nav id="navbar">
-  <a href="#home" class="nav-logo" onclick="closeMenu()">
-    <div class="logo-icon">▶</div>
-    Stream<span class="logo-verde">Verde</span>
-  </a>
-
-  <ul class="nav-links">
-    <li><a href="#home" class="active" onclick="setActive(this)">Home</a></li>
-    <li><a href="#features" onclick="setActive(this)">Features</a></li>
-    <li><a href="#channels" onclick="setActive(this)">Live TV</a></li>
-    <li><a href="#vod" onclick="setActive(this)">VOD</a></li>
-    <li><a href="#pricing" onclick="setActive(this)">Pricing</a></li>
-    <li><a href="#analytics" onclick="setActive(this)">Analytics</a></li>
-    <li><a href="#tech" onclick="setActive(this)">Tech</a></li>
-  </ul>
-
-  <div class="nav-actions">
-    <a href="../app/index.html" class="btn btn-ghost">Sign In</a>
-    <a href="../app/index.html" class="btn btn-primary">Get Started</a>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
 
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+  <!-- ======== NAVBAR ======== -->
+  <nav id="navbar">
+    <a href="#home" class="nav-logo" onclick="closeMenu()">
+      <div class="logo-icon">▶</div>
+      Stream<span class="logo-verde">Verde</span>
+    </a>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <ul class="nav-links">
-    <li><a href="#home" onclick="closeMenu()">Home</a></li>
-    <li><a href="#features" onclick="closeMenu()">Features</a></li>
-    <li><a href="#channels" onclick="closeMenu()">Live TV</a></li>
-    <li><a href="#vod" onclick="closeMenu()">VOD</a></li>
-    <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
-    <li><a href="#analytics" onclick="closeMenu()">Analytics</a></li>
-    <li><a href="#tech" onclick="closeMenu()">Tech</a></li>
-  </ul>
-  <div class="nav-actions">
-    <a href="../app/index.html" class="btn btn-ghost" onclick="closeMenu()">Sign In</a>
-    <a href="../app/index.html" class="btn btn-primary" onclick="closeMenu()">Get Started</a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active" onclick="setActive(this)">Home</a></li>
+      <li><a href="#features" onclick="setActive(this)">Features</a></li>
+      <li><a href="#channels" onclick="setActive(this)">Live TV</a></li>
+      <li><a href="#vod" onclick="setActive(this)">VOD</a></li>
+      <li><a href="#pricing" onclick="setActive(this)">Pricing</a></li>
+      <li><a href="#analytics" onclick="setActive(this)">Analytics</a></li>
+      <li><a href="#tech" onclick="setActive(this)">Tech</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="../app/index.html" class="btn btn-ghost">Sign In</a>
+      <a href="../app/index.html" class="btn btn-primary">Get Started</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="nav-links">
+      <li><a href="#home" onclick="closeMenu()">Home</a></li>
+      <li><a href="#features" onclick="closeMenu()">Features</a></li>
+      <li><a href="#channels" onclick="closeMenu()">Live TV</a></li>
+      <li><a href="#vod" onclick="closeMenu()">VOD</a></li>
+      <li><a href="#pricing" onclick="closeMenu()">Pricing</a></li>
+      <li><a href="#analytics" onclick="closeMenu()">Analytics</a></li>
+      <li><a href="#tech" onclick="closeMenu()">Tech</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="../app/index.html" class="btn btn-ghost" onclick="closeMenu()">Sign In</a>
+      <a href="../app/index.html" class="btn btn-primary" onclick="closeMenu()">Get Started</a>
+    </div>
   </div>
-</div>
 
-<!-- ======== HERO ======== -->
-<section id="home">
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-badge fade-in">
-          <span class="badge-dot"></span>
-          v1.0 — Now Live &amp; Streaming
-        </div>
-        <h1 class="hero-title fade-in fade-in-delay-1">
-          The Future of<br>
-          <span class="line-accent">IPTV Streaming</span><br>
-          Starts Here
-        </h1>
-        <p class="hero-desc fade-in fade-in-delay-2">
-          A cloud-native OTT platform delivering Live TV, VOD, Catch-up, Cloud DVR, and AI-powered recommendations across every screen. Built for operators, loved by viewers.
-        </p>
-        <div class="hero-ctas fade-in fade-in-delay-3">
-          <a href="#pricing" class="btn btn-primary btn-lg">▶ Start Streaming</a>
-          <a href="#features" class="btn btn-ghost btn-lg">Explore Features</a>
-        </div>
-        <div class="hero-stats fade-in fade-in-delay-4">
-          <div class="stat">
-            <div class="stat-num">4K</div>
-            <div class="stat-label">Ultra HD</div>
+  <!-- ======== HERO ======== -->
+  <section id="home">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge fade-in">
+            <span class="badge-dot"></span>
+            v1.0 — Now Live &amp; Streaming
           </div>
-          <div class="stat">
-            <div class="stat-num">500+</div>
-            <div class="stat-label">Channels</div>
+          <h1 class="hero-title fade-in fade-in-delay-1">
+            The Future of<br>
+            <span class="line-accent">IPTV Streaming</span><br>
+            Starts Here
+          </h1>
+          <p class="hero-desc fade-in fade-in-delay-2">
+            A cloud-native OTT platform delivering Live TV, VOD, Catch-up, Cloud DVR, and AI-powered recommendations
+            across every screen. Built for operators, loved by viewers.
+          </p>
+          <div class="hero-ctas fade-in fade-in-delay-3">
+            <a href="#pricing" class="btn btn-primary btn-lg">▶ Start Streaming</a>
+            <a href="#features" class="btn btn-ghost btn-lg">Explore Features</a>
           </div>
-          <div class="stat">
-            <div class="stat-num">15+</div>
-            <div class="stat-label">Devices</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">99.9%</div>
-            <div class="stat-label">Uptime</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-visual fade-in fade-in-delay-2">
-        <div class="tv-mockup">
-          <div class="tv-screen">
-            <div class="tv-topbar">
-              <div class="tv-dots">
-                <div class="tv-dot tv-dot-r"></div>
-                <div class="tv-dot tv-dot-y"></div>
-                <div class="tv-dot tv-dot-g"></div>
-              </div>
-              <span>StreamVerde · Live</span>
-              <span>20:34 UTC</span>
+          <div class="hero-stats fade-in fade-in-delay-4">
+            <div class="stat">
+              <div class="stat-num">4K</div>
+              <div class="stat-label">Ultra HD</div>
             </div>
-            <div class="tv-content">
-              <div class="tv-grid-bg">
-                <div class="tv-thumb"><div class="tv-thumb-label">CH 01</div></div>
-                <div class="tv-thumb"><div class="tv-thumb-label">CH 02</div></div>
-                <div class="tv-thumb"><div class="tv-thumb-label">CH 03</div></div>
-                <div class="tv-thumb"><div class="tv-thumb-label">CH 04</div></div>
-                <div class="tv-thumb"><div class="tv-thumb-label">CH 05</div></div>
-                <div class="tv-thumb"><div class="tv-thumb-label">CH 06</div></div>
-              </div>
-              <div class="tv-overlay-info">
-                <div class="tv-info-text">
-                  <div class="tv-info-title">Breaking News Live</div>
-                  <div class="tv-info-sub">HD · Dolby · Free</div>
+            <div class="stat">
+              <div class="stat-num">500+</div>
+              <div class="stat-label">Channels</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Devices</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">99.9%</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual fade-in fade-in-delay-2">
+          <div class="tv-mockup">
+            <div class="tv-screen">
+              <div class="tv-topbar">
+                <div class="tv-dots">
+                  <div class="tv-dot tv-dot-r"></div>
+                  <div class="tv-dot tv-dot-y"></div>
+                  <div class="tv-dot tv-dot-g"></div>
                 </div>
-                <div class="tv-play-btn">▶</div>
+                <span>StreamVerde · Live</span>
+                <span>20:34 UTC</span>
               </div>
-              <div class="tv-progress-bar"><div class="tv-progress-fill"></div></div>
+              <div class="tv-content">
+                <div class="tv-grid-bg">
+                  <div class="tv-thumb">
+                    <div class="tv-thumb-label">CH 01</div>
+                  </div>
+                  <div class="tv-thumb">
+                    <div class="tv-thumb-label">CH 02</div>
+                  </div>
+                  <div class="tv-thumb">
+                    <div class="tv-thumb-label">CH 03</div>
+                  </div>
+                  <div class="tv-thumb">
+                    <div class="tv-thumb-label">CH 04</div>
+                  </div>
+                  <div class="tv-thumb">
+                    <div class="tv-thumb-label">CH 05</div>
+                  </div>
+                  <div class="tv-thumb">
+                    <div class="tv-thumb-label">CH 06</div>
+                  </div>
+                </div>
+                <div class="tv-overlay-info">
+                  <div class="tv-info-text">
+                    <div class="tv-info-title">Breaking News Live</div>
+                    <div class="tv-info-sub">HD · Dolby · Free</div>
+                  </div>
+                  <div class="tv-play-btn">▶</div>
+                </div>
+                <div class="tv-progress-bar">
+                  <div class="tv-progress-fill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-badge fb-1">
+            <span class="dot"></span>
+            AI Recommendations Active
+          </div>
+          <div class="float-badge fb-2">
+            <span class="dot"></span>
+            4K HDR · HLS Stream
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- ======== FEATURES ======== -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Platform Features</span>
+        <h2 class="section-title">Everything You Need to<br><span class="accent">Run a World-Class</span> IPTV</h2>
+        <p class="section-desc">From live streaming to AI-powered discovery — every feature is built for scale,
+          security, and seamless subscriber experience.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">📺</div>
+          <div class="feature-name">Live TV Streaming</div>
+          <div class="feature-desc">Deliver hundreds of live channels with HLS, DASH, and RTMP. Adaptive bitrate from
+            240p to 4K with sub-second latency via WebRTC.</div>
+          <span class="feature-tag">HLS · DASH · 4K</span>
+        </div>
+        <div class="feature-card fade-in fade-in-delay-1">
+          <div class="feature-icon">🎬</div>
+          <div class="feature-name">Video On Demand</div>
+          <div class="feature-desc">Full movie and series library with rich metadata, multi-language subtitles, and
+            continue-watching progress sync across devices.</div>
+          <span class="feature-tag">VOD · Multi-lang</span>
+        </div>
+        <div class="feature-card fade-in fade-in-delay-2">
+          <div class="feature-icon">⏪</div>
+          <div class="feature-name">Catch-Up TV</div>
+          <div class="feature-desc">Replay up to 72 hours of past broadcasts. Timeline rewind, pause live TV, and access
+            archived programs on demand.</div>
+          <span class="feature-tag">72-hr Replay</span>
+        </div>
+        <div class="feature-card fade-in fade-in-delay-3">
+          <div class="feature-icon">☁️</div>
+          <div class="feature-name">Cloud DVR</div>
+          <div class="feature-desc">Schedule and record live programs to secure cloud storage. Playback any time, from
+            any device, with full series recording support.</div>
+          <span class="feature-tag">Cloud Storage</span>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-name">AI Recommendations</div>
+          <div class="feature-desc">Personalized content discovery using watch history, device context, time-of-day, and
+            location to surface exactly what viewers want.</div>
+          <span class="feature-tag">ML · Personalized</span>
+        </div>
+        <div class="feature-card fade-in fade-in-delay-1">
+          <div class="feature-icon">🔐</div>
+          <div class="feature-name">DRM & Security</div>
+          <div class="feature-desc">Widevine, PlayReady, and FairPlay DRM. Tokenized URLs, geo-blocking, VPN detection,
+            and anti-piracy watermarking built-in.</div>
+          <span class="feature-tag">Widevine · FairPlay</span>
+        </div>
+        <div class="feature-card fade-in fade-in-delay-2">
+          <div class="feature-icon">📊</div>
+          <div class="feature-name">Advanced Analytics</div>
+          <div class="feature-desc">Real-time dashboards for watch time, active users, device breakdowns, revenue
+            tracking, and content performance metrics.</div>
+          <span class="feature-tag">Prometheus · Grafana</span>
+        </div>
+        <div class="feature-card fade-in fade-in-delay-3">
+          <div class="feature-icon">💰</div>
+          <div class="feature-name">Monetization Engine</div>
+          <div class="feature-desc">Flexible subscription tiers, Pay-Per-View, ad injection (pre/mid/post-roll), and a
+            full reseller system with commission tracking.</div>
+          <span class="feature-tag">SVOD · AVOD · PPV</span>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">👨‍👩‍👧</div>
+          <div class="feature-name">Parental Controls</div>
+          <div class="feature-desc">Age-rated content filtering, PIN-protected profiles, dedicated kids mode, and
+            content category blocking per account.</div>
+          <span class="feature-tag">Kids Safe</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- ======== LIVE TV / EPG ======== -->
+  <section id="channels">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Live TV & EPG</span>
+        <h2 class="section-title">7–14 Day <span class="accent">Program Guide</span><br>Built Right In</h2>
+        <p class="section-desc">Full Electronic Program Guide with channel timeline, program reminders, recording
+          scheduling, and real-time metadata.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="channels-layout fade-in">
+        <div class="channels-list">
+          <div class="channel-item active">
+            <div class="channel-logo" style="background:rgba(255,60,60,0.1);">📡</div>
+            <div class="channel-info">
+              <div class="channel-name">News 24 Global</div>
+              <div class="channel-meta">CH 001 · English · HD</div>
+            </div>
+            <span class="channel-live">● LIVE</span>
+          </div>
+          <div class="channel-item">
+            <div class="channel-logo" style="background:rgba(0,200,100,0.1);">⚽</div>
+            <div class="channel-info">
+              <div class="channel-name">Sports Prime HD</div>
+              <div class="channel-meta">CH 050 · Multi · 4K</div>
+            </div>
+            <span class="channel-live">● LIVE</span>
+          </div>
+          <div class="channel-item">
+            <div class="channel-logo" style="background:rgba(100,80,255,0.1);">🎬</div>
+            <div class="channel-info">
+              <div class="channel-name">Cinema Ultra 4K</div>
+              <div class="channel-meta">CH 100 · English · 4K</div>
+            </div>
+            <span class="channel-live">● LIVE</span>
+          </div>
+          <div class="channel-item">
+            <div class="channel-logo" style="background:rgba(255,180,0,0.1);">🧒</div>
+            <div class="channel-info">
+              <div class="channel-name">KidsWorld</div>
+              <div class="channel-meta">CH 200 · Multi · HD</div>
+            </div>
+            <span class="channel-live">● LIVE</span>
+          </div>
+          <div class="channel-item">
+            <div class="channel-logo" style="background:rgba(0,180,255,0.1);">🌍</div>
+            <div class="channel-info">
+              <div class="channel-name">DocuNation</div>
+              <div class="channel-meta">CH 300 · English · HD</div>
+            </div>
+            <span class="channel-live">● LIVE</span>
+          </div>
+          <div class="channel-item">
+            <div class="channel-logo" style="background:rgba(255,100,100,0.1);">🎵</div>
+            <div class="channel-info">
+              <div class="channel-name">Music Beats 24/7</div>
+              <div class="channel-meta">CH 400 · Multi · HD</div>
+            </div>
+            <span class="channel-live">● LIVE</span>
+          </div>
+        </div>
+
+        <div class="epg-panel">
+          <div class="epg-header">
+            <div class="epg-title">📅 Program Guide — News 24 Global</div>
+            <div class="epg-date">TUE, 10 MAR 2026</div>
+          </div>
+          <div class="epg-timeline">
+            <span class="time-slot">18:00</span>
+            <span class="time-slot active">19:00</span>
+            <span class="time-slot">20:00</span>
+            <span class="time-slot">21:00</span>
+            <span class="time-slot">22:00</span>
+            <span class="time-slot">23:00</span>
+            <span class="time-slot">00:00</span>
+          </div>
+          <div class="epg-programs">
+            <div class="program-block">
+              <div class="prog-time">18:00</div>
+              <div class="prog-info">
+                <div class="prog-title">World Markets Report</div>
+                <div class="prog-genre">Finance · 60 min</div>
+              </div>
+            </div>
+            <div class="program-block now">
+              <div class="prog-time">19:00</div>
+              <div class="prog-info">
+                <div class="prog-title">Breaking News — Live Coverage</div>
+                <div class="prog-genre">News · 60 min</div>
+              </div>
+              <span class="prog-badge">NOW</span>
+            </div>
+            <div class="program-block">
+              <div class="prog-time">20:00</div>
+              <div class="prog-info">
+                <div class="prog-title">Prime Time Debate</div>
+                <div class="prog-genre">Talk Show · 90 min</div>
+              </div>
+            </div>
+            <div class="program-block">
+              <div class="prog-time">21:30</div>
+              <div class="prog-info">
+                <div class="prog-title">Tech Tonight with Sarah Lin</div>
+                <div class="prog-genre">Technology · 30 min</div>
+              </div>
+            </div>
+            <div class="program-block">
+              <div class="prog-time">22:00</div>
+              <div class="prog-info">
+                <div class="prog-title">Late Night World Digest</div>
+                <div class="prog-genre">News · 60 min</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="float-badge fb-1">
-          <span class="dot"></span>
-          AI Recommendations Active
-        </div>
-        <div class="float-badge fb-2">
-          <span class="dot"></span>
-          4K HDR · HLS Stream
-        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-sep"></div>
+  <div class="section-sep"></div>
 
-<!-- ======== FEATURES ======== -->
-<section id="features">
-  <div class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">Platform Features</span>
-      <h2 class="section-title">Everything You Need to<br><span class="accent">Run a World-Class</span> IPTV</h2>
-      <p class="section-desc">From live streaming to AI-powered discovery — every feature is built for scale, security, and seamless subscriber experience.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card fade-in">
-        <div class="feature-icon">📺</div>
-        <div class="feature-name">Live TV Streaming</div>
-        <div class="feature-desc">Deliver hundreds of live channels with HLS, DASH, and RTMP. Adaptive bitrate from 240p to 4K with sub-second latency via WebRTC.</div>
-        <span class="feature-tag">HLS · DASH · 4K</span>
+  <!-- ======== VOD ======== -->
+  <section id="vod">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Video On Demand</span>
+        <h2 class="section-title">Thousands of Titles.<br><span class="accent">One Platform.</span></h2>
+        <p class="section-desc">Movies, series, and documentaries with AI-powered discovery, multi-language support, and
+          seamless cross-device playback.</p>
+        <div class="divider"></div>
       </div>
-      <div class="feature-card fade-in fade-in-delay-1">
-        <div class="feature-icon">🎬</div>
-        <div class="feature-name">Video On Demand</div>
-        <div class="feature-desc">Full movie and series library with rich metadata, multi-language subtitles, and continue-watching progress sync across devices.</div>
-        <span class="feature-tag">VOD · Multi-lang</span>
+      <div class="vod-filters fade-in">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Movies</button>
+        <button class="filter-btn">Series</button>
+        <button class="filter-btn">Documentaries</button>
+        <button class="filter-btn">Action</button>
+        <button class="filter-btn">Drama</button>
+        <button class="filter-btn">Sci-Fi</button>
       </div>
-      <div class="feature-card fade-in fade-in-delay-2">
-        <div class="feature-icon">⏪</div>
-        <div class="feature-name">Catch-Up TV</div>
-        <div class="feature-desc">Replay up to 72 hours of past broadcasts. Timeline rewind, pause live TV, and access archived programs on demand.</div>
-        <span class="feature-tag">72-hr Replay</span>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-3">
-        <div class="feature-icon">☁️</div>
-        <div class="feature-name">Cloud DVR</div>
-        <div class="feature-desc">Schedule and record live programs to secure cloud storage. Playback any time, from any device, with full series recording support.</div>
-        <span class="feature-tag">Cloud Storage</span>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">🤖</div>
-        <div class="feature-name">AI Recommendations</div>
-        <div class="feature-desc">Personalized content discovery using watch history, device context, time-of-day, and location to surface exactly what viewers want.</div>
-        <span class="feature-tag">ML · Personalized</span>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-1">
-        <div class="feature-icon">🔐</div>
-        <div class="feature-name">DRM & Security</div>
-        <div class="feature-desc">Widevine, PlayReady, and FairPlay DRM. Tokenized URLs, geo-blocking, VPN detection, and anti-piracy watermarking built-in.</div>
-        <span class="feature-tag">Widevine · FairPlay</span>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-2">
-        <div class="feature-icon">📊</div>
-        <div class="feature-name">Advanced Analytics</div>
-        <div class="feature-desc">Real-time dashboards for watch time, active users, device breakdowns, revenue tracking, and content performance metrics.</div>
-        <span class="feature-tag">Prometheus · Grafana</span>
-      </div>
-      <div class="feature-card fade-in fade-in-delay-3">
-        <div class="feature-icon">💰</div>
-        <div class="feature-name">Monetization Engine</div>
-        <div class="feature-desc">Flexible subscription tiers, Pay-Per-View, ad injection (pre/mid/post-roll), and a full reseller system with commission tracking.</div>
-        <span class="feature-tag">SVOD · AVOD · PPV</span>
-      </div>
-      <div class="feature-card fade-in">
-        <div class="feature-icon">👨‍👩‍👧</div>
-        <div class="feature-name">Parental Controls</div>
-        <div class="feature-desc">Age-rated content filtering, PIN-protected profiles, dedicated kids mode, and content category blocking per account.</div>
-        <span class="feature-tag">Kids Safe</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-sep"></div>
-
-<!-- ======== LIVE TV / EPG ======== -->
-<section id="channels">
-  <div class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">Live TV & EPG</span>
-      <h2 class="section-title">7–14 Day <span class="accent">Program Guide</span><br>Built Right In</h2>
-      <p class="section-desc">Full Electronic Program Guide with channel timeline, program reminders, recording scheduling, and real-time metadata.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="channels-layout fade-in">
-      <div class="channels-list">
-        <div class="channel-item active">
-          <div class="channel-logo" style="background:rgba(255,60,60,0.1);">📡</div>
-          <div class="channel-info">
-            <div class="channel-name">News 24 Global</div>
-            <div class="channel-meta">CH 001 · English · HD</div>
-          </div>
-          <span class="channel-live">● LIVE</span>
-        </div>
-        <div class="channel-item">
-          <div class="channel-logo" style="background:rgba(0,200,100,0.1);">⚽</div>
-          <div class="channel-info">
-            <div class="channel-name">Sports Prime HD</div>
-            <div class="channel-meta">CH 050 · Multi · 4K</div>
-          </div>
-          <span class="channel-live">● LIVE</span>
-        </div>
-        <div class="channel-item">
-          <div class="channel-logo" style="background:rgba(100,80,255,0.1);">🎬</div>
-          <div class="channel-info">
-            <div class="channel-name">Cinema Ultra 4K</div>
-            <div class="channel-meta">CH 100 · English · 4K</div>
-          </div>
-          <span class="channel-live">● LIVE</span>
-        </div>
-        <div class="channel-item">
-          <div class="channel-logo" style="background:rgba(255,180,0,0.1);">🧒</div>
-          <div class="channel-info">
-            <div class="channel-name">KidsWorld</div>
-            <div class="channel-meta">CH 200 · Multi · HD</div>
-          </div>
-          <span class="channel-live">● LIVE</span>
-        </div>
-        <div class="channel-item">
-          <div class="channel-logo" style="background:rgba(0,180,255,0.1);">🌍</div>
-          <div class="channel-info">
-            <div class="channel-name">DocuNation</div>
-            <div class="channel-meta">CH 300 · English · HD</div>
-          </div>
-          <span class="channel-live">● LIVE</span>
-        </div>
-        <div class="channel-item">
-          <div class="channel-logo" style="background:rgba(255,100,100,0.1);">🎵</div>
-          <div class="channel-info">
-            <div class="channel-name">Music Beats 24/7</div>
-            <div class="channel-meta">CH 400 · Multi · HD</div>
-          </div>
-          <span class="channel-live">● LIVE</span>
-        </div>
-      </div>
-
-      <div class="epg-panel">
-        <div class="epg-header">
-          <div class="epg-title">📅 Program Guide — News 24 Global</div>
-          <div class="epg-date">TUE, 10 MAR 2026</div>
-        </div>
-        <div class="epg-timeline">
-          <span class="time-slot">18:00</span>
-          <span class="time-slot active">19:00</span>
-          <span class="time-slot">20:00</span>
-          <span class="time-slot">21:00</span>
-          <span class="time-slot">22:00</span>
-          <span class="time-slot">23:00</span>
-          <span class="time-slot">00:00</span>
-        </div>
-        <div class="epg-programs">
-          <div class="program-block">
-            <div class="prog-time">18:00</div>
-            <div class="prog-info">
-              <div class="prog-title">World Markets Report</div>
-              <div class="prog-genre">Finance · 60 min</div>
+      <div class="vod-grid fade-in">
+        <div class="vod-card">
+          <div class="vod-thumb">
+            <div class="vod-thumb-img"
+              style="background: url('https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?auto=format&fit=crop&w=400&h=600&q=80') center/cover;">
+            </div>
+            <span class="vod-quality">4K</span>
+            <span class="vod-rating">★ 8.4</span>
+            <div class="vod-overlay">
+              <div class="vod-play">▶</div>
             </div>
           </div>
-          <div class="program-block now">
-            <div class="prog-time">19:00</div>
-            <div class="prog-info">
-              <div class="prog-title">Breaking News — Live Coverage</div>
-              <div class="prog-genre">News · 60 min</div>
+          <div class="vod-title">Galactic Frontier</div>
+          <div class="vod-meta">2025 · Sci-Fi · 2h 14m</div>
+        </div>
+        <div class="vod-card">
+          <div class="vod-thumb">
+            <div class="vod-thumb-img"
+              style="background: url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&h=600&q=80') center/cover;">
             </div>
-            <span class="prog-badge">NOW</span>
-          </div>
-          <div class="program-block">
-            <div class="prog-time">20:00</div>
-            <div class="prog-info">
-              <div class="prog-title">Prime Time Debate</div>
-              <div class="prog-genre">Talk Show · 90 min</div>
-            </div>
-          </div>
-          <div class="program-block">
-            <div class="prog-time">21:30</div>
-            <div class="prog-info">
-              <div class="prog-title">Tech Tonight with Sarah Lin</div>
-              <div class="prog-genre">Technology · 30 min</div>
+            <span class="vod-quality">HD</span>
+            <span class="vod-rating">★ 7.9</span>
+            <div class="vod-overlay">
+              <div class="vod-play">▶</div>
             </div>
           </div>
-          <div class="program-block">
-            <div class="prog-time">22:00</div>
-            <div class="prog-info">
-              <div class="prog-title">Late Night World Digest</div>
-              <div class="prog-genre">News · 60 min</div>
+          <div class="vod-title">The Last Forest</div>
+          <div class="vod-meta">2024 · Drama · 1h 48m</div>
+        </div>
+        <div class="vod-card">
+          <div class="vod-thumb">
+            <div class="vod-thumb-img"
+              style="background: url('https://images.unsplash.com/photo-1555580399-317fb1d00613?auto=format&fit=crop&w=400&h=600&q=80') center/cover;">
+            </div>
+            <span class="vod-quality">4K</span>
+            <span class="vod-rating">★ 9.1</span>
+            <div class="vod-overlay">
+              <div class="vod-play">▶</div>
             </div>
           </div>
+          <div class="vod-title">Ember Protocol</div>
+          <div class="vod-meta">2025 · Action · 2h 02m</div>
+        </div>
+        <div class="vod-card">
+          <div class="vod-thumb">
+            <div class="vod-thumb-img"
+              style="background: url('https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=400&h=600&q=80') center/cover;">
+            </div>
+            <span class="vod-quality">HD</span>
+            <span class="vod-rating">★ 8.7</span>
+            <div class="vod-overlay">
+              <div class="vod-play">▶</div>
+            </div>
+          </div>
+          <div class="vod-title">Deep Blue Rise</div>
+          <div class="vod-meta">2024 · Thriller · 1h 56m</div>
+        </div>
+        <div class="vod-card">
+          <div class="vod-thumb">
+            <div class="vod-thumb-img"
+              style="background: url('https://images.unsplash.com/photo-1555448248-2571daf6344b?auto=format&fit=crop&w=400&h=600&q=80') center/cover;">
+            </div>
+            <span class="vod-quality">4K</span>
+            <span class="vod-rating">★ 8.2</span>
+            <div class="vod-overlay">
+              <div class="vod-play">▶</div>
+            </div>
+          </div>
+          <div class="vod-title">Neon District</div>
+          <div class="vod-meta">2025 · Neo-Noir · 2h 10m</div>
+        </div>
+        <div class="vod-card">
+          <div class="vod-thumb">
+            <div class="vod-thumb-img"
+              style="background: url('https://images.unsplash.com/photo-1605371924599-2d0365da26f5?auto=format&fit=crop&w=400&h=600&q=80') center/cover;">
+            </div>
+            <span class="vod-quality">HD</span>
+            <span class="vod-rating">★ 7.6</span>
+            <div class="vod-overlay">
+              <div class="vod-play">▶</div>
+            </div>
+          </div>
+          <div class="vod-title">Storm Surge</div>
+          <div class="vod-meta">2024 · Adventure · 1h 40m</div>
+        </div>
+        <div class="vod-card">
+          <div class="vod-thumb">
+            <div class="vod-thumb-img"
+              style="background: url('https://images.unsplash.com/photo-1485603704988-34fec3e6a2eb?auto=format&fit=crop&w=400&h=600&q=80') center/cover;">
+            </div>
+            <span class="vod-quality">4K</span>
+            <span class="vod-rating">★ 9.3</span>
+            <div class="vod-overlay">
+              <div class="vod-play">▶</div>
+            </div>
+          </div>
+          <div class="vod-title">Synthetic Dawn</div>
+          <div class="vod-meta">2025 · Sci-Fi · 2h 28m</div>
+        </div>
+        <div class="vod-card">
+          <div class="vod-thumb">
+            <div class="vod-thumb-img"
+              style="background: url('https://images.unsplash.com/photo-1610427847957-c466488d5e0a?auto=format&fit=crop&w=400&h=600&q=80') center/cover;">
+            </div>
+            <span class="vod-quality">HD</span>
+            <span class="vod-rating">★ 8.0</span>
+            <div class="vod-overlay">
+              <div class="vod-play">▶</div>
+            </div>
+          </div>
+          <div class="vod-title">Midnight Heist</div>
+          <div class="vod-meta">2024 · Crime · 1h 52m</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-sep"></div>
+  <div class="section-sep"></div>
 
-<!-- ======== VOD ======== -->
-<section id="vod">
-  <div class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">Video On Demand</span>
-      <h2 class="section-title">Thousands of Titles.<br><span class="accent">One Platform.</span></h2>
-      <p class="section-desc">Movies, series, and documentaries with AI-powered discovery, multi-language support, and seamless cross-device playback.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="vod-filters fade-in">
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">Movies</button>
-      <button class="filter-btn">Series</button>
-      <button class="filter-btn">Documentaries</button>
-      <button class="filter-btn">Action</button>
-      <button class="filter-btn">Drama</button>
-      <button class="filter-btn">Sci-Fi</button>
-    </div>
-    <div class="vod-grid fade-in">
-      <div class="vod-card">
-        <div class="vod-thumb">
-          <div class="vod-thumb-img" style="background:linear-gradient(145deg,#001a15,#003a20);">🌌</div>
-          <span class="vod-quality">4K</span>
-          <span class="vod-rating">★ 8.4</span>
-          <div class="vod-overlay"><div class="vod-play">▶</div></div>
-        </div>
-        <div class="vod-title">Galactic Frontier</div>
-        <div class="vod-meta">2025 · Sci-Fi · 2h 14m</div>
+  <!-- ======== PRICING ======== -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Subscription Plans</span>
+        <h2 class="section-title">Simple, Transparent<br><span class="accent">Pricing</span></h2>
+        <p class="section-desc">Choose the plan that fits your needs. Upgrade or cancel anytime, no lock-in contracts.
+        </p>
+        <div class="divider"></div>
       </div>
-      <div class="vod-card">
-        <div class="vod-thumb">
-          <div class="vod-thumb-img" style="background:linear-gradient(145deg,#0d1a00,#2a3800);">🌿</div>
-          <span class="vod-quality">HD</span>
-          <span class="vod-rating">★ 7.9</span>
-          <div class="vod-overlay"><div class="vod-play">▶</div></div>
+      <div class="pricing-grid fade-in">
+        <div class="pricing-card">
+          <div class="plan-name">Basic</div>
+          <div class="plan-price">
+            <span class="price-currency">$</span>
+            <span class="price-amount">9</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="plan-desc">Perfect for personal viewing on a single screen.</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> 100+ Live Channels</li>
+            <li><span class="check">✓</span> HD Quality (720p)</li>
+            <li><span class="check">✓</span> VOD Library Access</li>
+            <li><span class="check">✓</span> 1 Active Device</li>
+            <li><span class="check">✓</span> 24h Catch-Up TV</li>
+            <li class="dim"><span class="cross">✗</span> Cloud DVR</li>
+            <li class="dim"><span class="cross">✗</span> 4K Streaming</li>
+            <li class="dim"><span class="cross">✗</span> AI Recommendations</li>
+          </ul>
+          <a href="#" class="btn btn-ghost btn-plan">Get Basic</a>
         </div>
-        <div class="vod-title">The Last Forest</div>
-        <div class="vod-meta">2024 · Drama · 1h 48m</div>
-      </div>
-      <div class="vod-card">
-        <div class="vod-thumb">
-          <div class="vod-thumb-img" style="background:linear-gradient(145deg,#1a000a,#380014);">🔥</div>
-          <span class="vod-quality">4K</span>
-          <span class="vod-rating">★ 9.1</span>
-          <div class="vod-overlay"><div class="vod-play">▶</div></div>
+
+        <div class="pricing-card featured">
+          <span class="featured-badge">Most Popular</span>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price">
+            <span class="price-currency">$</span>
+            <span class="price-amount">19</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="plan-desc">For families and enthusiasts who want everything.</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> 500+ Live Channels</li>
+            <li><span class="check">✓</span> Full HD (1080p)</li>
+            <li><span class="check">✓</span> Full VOD Library</li>
+            <li><span class="check">✓</span> 4 Active Devices</li>
+            <li><span class="check">✓</span> 72h Catch-Up TV</li>
+            <li><span class="check">✓</span> 100GB Cloud DVR</li>
+            <li><span class="check">✓</span> AI Recommendations</li>
+            <li class="dim"><span class="cross">✗</span> 4K Streaming</li>
+          </ul>
+          <a href="#" class="btn btn-primary btn-plan">Get Pro</a>
         </div>
-        <div class="vod-title">Ember Protocol</div>
-        <div class="vod-meta">2025 · Action · 2h 02m</div>
-      </div>
-      <div class="vod-card">
-        <div class="vod-thumb">
-          <div class="vod-thumb-img" style="background:linear-gradient(145deg,#00101a,#002038);">🌊</div>
-          <span class="vod-quality">HD</span>
-          <span class="vod-rating">★ 8.7</span>
-          <div class="vod-overlay"><div class="vod-play">▶</div></div>
+
+        <div class="pricing-card">
+          <div class="plan-name">Ultra</div>
+          <div class="plan-price">
+            <span class="price-currency">$</span>
+            <span class="price-amount">35</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="plan-desc">Maximum quality for the ultimate home cinema setup.</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><span class="check">✓</span> 500+ Live Channels</li>
+            <li><span class="check">✓</span> 4K Ultra HD + HDR</li>
+            <li><span class="check">✓</span> Full VOD Library</li>
+            <li><span class="check">✓</span> 6 Active Devices</li>
+            <li><span class="check">✓</span> 72h Catch-Up TV</li>
+            <li><span class="check">✓</span> 500GB Cloud DVR</li>
+            <li><span class="check">✓</span> AI Recommendations</li>
+            <li><span class="check">✓</span> Dolby Atmos Audio</li>
+          </ul>
+          <a href="#" class="btn btn-ghost btn-plan">Get Ultra</a>
         </div>
-        <div class="vod-title">Deep Blue Rise</div>
-        <div class="vod-meta">2024 · Thriller · 1h 56m</div>
-      </div>
-      <div class="vod-card">
-        <div class="vod-thumb">
-          <div class="vod-thumb-img" style="background:linear-gradient(145deg,#1a0d00,#382500);">🏙️</div>
-          <span class="vod-quality">4K</span>
-          <span class="vod-rating">★ 8.2</span>
-          <div class="vod-overlay"><div class="vod-play">▶</div></div>
-        </div>
-        <div class="vod-title">Neon District</div>
-        <div class="vod-meta">2025 · Neo-Noir · 2h 10m</div>
-      </div>
-      <div class="vod-card">
-        <div class="vod-thumb">
-          <div class="vod-thumb-img" style="background:linear-gradient(145deg,#0a001a,#1a0035);">⚡</div>
-          <span class="vod-quality">HD</span>
-          <span class="vod-rating">★ 7.6</span>
-          <div class="vod-overlay"><div class="vod-play">▶</div></div>
-        </div>
-        <div class="vod-title">Storm Surge</div>
-        <div class="vod-meta">2024 · Adventure · 1h 40m</div>
-      </div>
-      <div class="vod-card">
-        <div class="vod-thumb">
-          <div class="vod-thumb-img" style="background:linear-gradient(145deg,#001515,#003030);">🤖</div>
-          <span class="vod-quality">4K</span>
-          <span class="vod-rating">★ 9.3</span>
-          <div class="vod-overlay"><div class="vod-play">▶</div></div>
-        </div>
-        <div class="vod-title">Synthetic Dawn</div>
-        <div class="vod-meta">2025 · Sci-Fi · 2h 28m</div>
-      </div>
-      <div class="vod-card">
-        <div class="vod-thumb">
-          <div class="vod-thumb-img" style="background:linear-gradient(145deg,#1a1000,#382800);">🌙</div>
-          <span class="vod-quality">HD</span>
-          <span class="vod-rating">★ 8.0</span>
-          <div class="vod-overlay"><div class="vod-play">▶</div></div>
-        </div>
-        <div class="vod-title">Midnight Heist</div>
-        <div class="vod-meta">2024 · Crime · 1h 52m</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-sep"></div>
+  <div class="section-sep"></div>
 
-<!-- ======== PRICING ======== -->
-<section id="pricing">
-  <div class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">Subscription Plans</span>
-      <h2 class="section-title">Simple, Transparent<br><span class="accent">Pricing</span></h2>
-      <p class="section-desc">Choose the plan that fits your needs. Upgrade or cancel anytime, no lock-in contracts.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="pricing-grid fade-in">
-      <div class="pricing-card">
-        <div class="plan-name">Basic</div>
-        <div class="plan-price">
-          <span class="price-currency">$</span>
-          <span class="price-amount">9</span>
-          <span class="price-period">/month</span>
-        </div>
-        <div class="plan-desc">Perfect for personal viewing on a single screen.</div>
-        <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span> 100+ Live Channels</li>
-          <li><span class="check">✓</span> HD Quality (720p)</li>
-          <li><span class="check">✓</span> VOD Library Access</li>
-          <li><span class="check">✓</span> 1 Active Device</li>
-          <li><span class="check">✓</span> 24h Catch-Up TV</li>
-          <li class="dim"><span class="cross">✗</span> Cloud DVR</li>
-          <li class="dim"><span class="cross">✗</span> 4K Streaming</li>
-          <li class="dim"><span class="cross">✗</span> AI Recommendations</li>
-        </ul>
-        <a href="#" class="btn btn-ghost btn-plan">Get Basic</a>
+  <!-- ======== MULTI-PLATFORM ======== -->
+  <section id="platforms">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Multi-Device Support</span>
+        <h2 class="section-title">Stream on Every <span class="accent">Screen</span></h2>
+        <p class="section-desc">From mobile to 4K TV, StreamVerde runs natively on all your devices with seamless
+          cross-device sync.</p>
+        <div class="divider"></div>
       </div>
-
-      <div class="pricing-card featured">
-        <span class="featured-badge">Most Popular</span>
-        <div class="plan-name">Pro</div>
-        <div class="plan-price">
-          <span class="price-currency">$</span>
-          <span class="price-amount">19</span>
-          <span class="price-period">/month</span>
+      <div class="platforms-grid fade-in">
+        <div class="platform-badge" data-tooltip="Chrome, Firefox, Edge, Safari">
+          <div class="platform-icon">🌐</div>
+          <div class="platform-name">Web Browser</div>
         </div>
-        <div class="plan-desc">For families and enthusiasts who want everything.</div>
-        <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span> 500+ Live Channels</li>
-          <li><span class="check">✓</span> Full HD (1080p)</li>
-          <li><span class="check">✓</span> Full VOD Library</li>
-          <li><span class="check">✓</span> 4 Active Devices</li>
-          <li><span class="check">✓</span> 72h Catch-Up TV</li>
-          <li><span class="check">✓</span> 100GB Cloud DVR</li>
-          <li><span class="check">✓</span> AI Recommendations</li>
-          <li class="dim"><span class="cross">✗</span> 4K Streaming</li>
-        </ul>
-        <a href="#" class="btn btn-primary btn-plan">Get Pro</a>
-      </div>
-
-      <div class="pricing-card">
-        <div class="plan-name">Ultra</div>
-        <div class="plan-price">
-          <span class="price-currency">$</span>
-          <span class="price-amount">35</span>
-          <span class="price-period">/month</span>
+        <div class="platform-badge" data-tooltip="iOS & iPadOS">
+          <div class="platform-icon">📱</div>
+          <div class="platform-name">iPhone / iPad</div>
         </div>
-        <div class="plan-desc">Maximum quality for the ultimate home cinema setup.</div>
-        <div class="plan-divider"></div>
-        <ul class="plan-features">
-          <li><span class="check">✓</span> 500+ Live Channels</li>
-          <li><span class="check">✓</span> 4K Ultra HD + HDR</li>
-          <li><span class="check">✓</span> Full VOD Library</li>
-          <li><span class="check">✓</span> 6 Active Devices</li>
-          <li><span class="check">✓</span> 72h Catch-Up TV</li>
-          <li><span class="check">✓</span> 500GB Cloud DVR</li>
-          <li><span class="check">✓</span> AI Recommendations</li>
-          <li><span class="check">✓</span> Dolby Atmos Audio</li>
-        </ul>
-        <a href="#" class="btn btn-ghost btn-plan">Get Ultra</a>
+        <div class="platform-badge" data-tooltip="Android 8+">
+          <div class="platform-icon">🤖</div>
+          <div class="platform-name">Android</div>
+        </div>
+        <div class="platform-badge" data-tooltip="Android TV / Google TV">
+          <div class="platform-icon">📺</div>
+          <div class="platform-name">Android TV</div>
+        </div>
+        <div class="platform-badge" data-tooltip="Apple TV 4K">
+          <div class="platform-icon">🍎</div>
+          <div class="platform-name">Apple TV</div>
+        </div>
+        <div class="platform-badge" data-tooltip="Tizen OS 4+">
+          <div class="platform-icon">⚙️</div>
+          <div class="platform-name">Samsung TV</div>
+        </div>
+        <div class="platform-badge" data-tooltip="WebOS 4+">
+          <div class="platform-icon">🖥️</div>
+          <div class="platform-name">LG WebOS</div>
+        </div>
+        <div class="platform-badge" data-tooltip="MAG, Enigma2, Android STB">
+          <div class="platform-icon">📡</div>
+          <div class="platform-name">Set-top Box</div>
+        </div>
+        <div class="platform-badge" data-tooltip="Windows & macOS">
+          <div class="platform-icon">💻</div>
+          <div class="platform-name">Desktop App</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-sep"></div>
+  <div class="section-sep"></div>
 
-<!-- ======== MULTI-PLATFORM ======== -->
-<section id="platforms">
-  <div class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">Multi-Device Support</span>
-      <h2 class="section-title">Stream on Every <span class="accent">Screen</span></h2>
-      <p class="section-desc">From mobile to 4K TV, StreamVerde runs natively on all your devices with seamless cross-device sync.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="platforms-grid fade-in">
-      <div class="platform-badge" data-tooltip="Chrome, Firefox, Edge, Safari">
-        <div class="platform-icon">🌐</div>
-        <div class="platform-name">Web Browser</div>
+  <!-- ======== ANALYTICS ======== -->
+  <section id="analytics">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Analytics Dashboard</span>
+        <h2 class="section-title">Real-Time Insights for<br><span class="accent">Smarter Operations</span></h2>
+        <p class="section-desc">Prometheus-powered metrics with Grafana dashboards. Track every viewer, every stream,
+          every dollar.</p>
+        <div class="divider"></div>
       </div>
-      <div class="platform-badge" data-tooltip="iOS & iPadOS">
-        <div class="platform-icon">📱</div>
-        <div class="platform-name">iPhone / iPad</div>
-      </div>
-      <div class="platform-badge" data-tooltip="Android 8+">
-        <div class="platform-icon">🤖</div>
-        <div class="platform-name">Android</div>
-      </div>
-      <div class="platform-badge" data-tooltip="Android TV / Google TV">
-        <div class="platform-icon">📺</div>
-        <div class="platform-name">Android TV</div>
-      </div>
-      <div class="platform-badge" data-tooltip="Apple TV 4K">
-        <div class="platform-icon">🍎</div>
-        <div class="platform-name">Apple TV</div>
-      </div>
-      <div class="platform-badge" data-tooltip="Tizen OS 4+">
-        <div class="platform-icon">⚙️</div>
-        <div class="platform-name">Samsung TV</div>
-      </div>
-      <div class="platform-badge" data-tooltip="WebOS 4+">
-        <div class="platform-icon">🖥️</div>
-        <div class="platform-name">LG WebOS</div>
-      </div>
-      <div class="platform-badge" data-tooltip="MAG, Enigma2, Android STB">
-        <div class="platform-icon">📡</div>
-        <div class="platform-name">Set-top Box</div>
-      </div>
-      <div class="platform-badge" data-tooltip="Windows & macOS">
-        <div class="platform-icon">💻</div>
-        <div class="platform-name">Desktop App</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-sep"></div>
-
-<!-- ======== ANALYTICS ======== -->
-<section id="analytics">
-  <div class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">Analytics Dashboard</span>
-      <h2 class="section-title">Real-Time Insights for<br><span class="accent">Smarter Operations</span></h2>
-      <p class="section-desc">Prometheus-powered metrics with Grafana dashboards. Track every viewer, every stream, every dollar.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="analytics-layout fade-in">
-      <div class="metric-card">
-        <div class="metric-header">
-          <span class="metric-label">Active Users</span>
-          <span class="metric-change up">▲ 12.4%</span>
-        </div>
-        <div class="metric-value">48,291</div>
-        <div class="metric-chart">
-          <div class="bar" style="height:40%"></div>
-          <div class="bar" style="height:55%"></div>
-          <div class="bar" style="height:45%"></div>
-          <div class="bar" style="height:70%"></div>
-          <div class="bar" style="height:60%"></div>
-          <div class="bar" style="height:80%"></div>
-          <div class="bar" style="height:75%"></div>
-          <div class="bar" style="height:90%"></div>
-          <div class="bar" style="height:85%"></div>
-          <div class="bar" style="height:100%"></div>
-        </div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header">
-          <span class="metric-label">Watch Time</span>
-          <span class="metric-change up">▲ 8.7%</span>
-        </div>
-        <div class="metric-value">2.4M hrs</div>
-        <div class="metric-chart">
-          <div class="bar" style="height:50%"></div>
-          <div class="bar" style="height:65%"></div>
-          <div class="bar" style="height:55%"></div>
-          <div class="bar" style="height:80%"></div>
-          <div class="bar" style="height:70%"></div>
-          <div class="bar" style="height:90%"></div>
-          <div class="bar" style="height:85%"></div>
-          <div class="bar" style="height:75%"></div>
-          <div class="bar" style="height:95%"></div>
-          <div class="bar" style="height:100%"></div>
-        </div>
-      </div>
-
-      <div class="chart-area">
-        <div class="chart-header">
-          <div class="chart-title">Monthly Revenue &amp; Subscriptions</div>
-          <div class="chart-tabs">
-            <button class="chart-tab active">Revenue</button>
-            <button class="chart-tab">Users</button>
-            <button class="chart-tab">Streams</button>
+      <div class="analytics-layout fade-in">
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-label">Active Users</span>
+            <span class="metric-change up">▲ 12.4%</span>
+          </div>
+          <div class="metric-value">48,291</div>
+          <div class="metric-chart">
+            <div class="bar" style="height:40%"></div>
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:45%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:60%"></div>
+            <div class="bar" style="height:80%"></div>
+            <div class="bar" style="height:75%"></div>
+            <div class="bar" style="height:90%"></div>
+            <div class="bar" style="height:85%"></div>
+            <div class="bar" style="height:100%"></div>
           </div>
         </div>
-        <div class="chart-svg-wrap">
-          <svg class="line-chart" viewBox="0 0 800 120" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#00ff87" stop-opacity="0.2"/>
-                <stop offset="100%" stop-color="#00ff87" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <path class="chart-area-fill" d="M0,100 L80,85 L160,75 L240,65 L320,60 L400,45 L480,38 L560,25 L640,20 L720,15 L800,8 L800,120 L0,120 Z"/>
-            <path class="chart-line" d="M0,100 L80,85 L160,75 L240,65 L320,60 L400,45 L480,38 L560,25 L640,20 L720,15 L800,8"/>
-            <circle class="chart-dot" cx="0" cy="100" r="4"/>
-            <circle class="chart-dot" cx="80" cy="85" r="4"/>
-            <circle class="chart-dot" cx="160" cy="75" r="4"/>
-            <circle class="chart-dot" cx="240" cy="65" r="4"/>
-            <circle class="chart-dot" cx="320" cy="60" r="4"/>
-            <circle class="chart-dot" cx="400" cy="45" r="4"/>
-            <circle class="chart-dot" cx="480" cy="38" r="4"/>
-            <circle class="chart-dot" cx="560" cy="25" r="4"/>
-            <circle class="chart-dot" cx="640" cy="20" r="4"/>
-            <circle class="chart-dot" cx="720" cy="15" r="4"/>
-            <circle class="chart-dot" cx="800" cy="8" r="4"/>
-          </svg>
-        </div>
-      </div>
-
-      <div class="metric-card">
-        <div class="metric-header">
-          <span class="metric-label">Revenue</span>
-          <span class="metric-change up">▲ 21.3%</span>
-        </div>
-        <div class="metric-value">$182K</div>
-        <div class="metric-chart">
-          <div class="bar" style="height:35%"></div>
-          <div class="bar" style="height:50%"></div>
-          <div class="bar" style="height:60%"></div>
-          <div class="bar" style="height:55%"></div>
-          <div class="bar" style="height:75%"></div>
-          <div class="bar" style="height:70%"></div>
-          <div class="bar" style="height:85%"></div>
-          <div class="bar" style="height:90%"></div>
-          <div class="bar" style="height:88%"></div>
-          <div class="bar" style="height:100%"></div>
-        </div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-header">
-          <span class="metric-label">Churn Rate</span>
-          <span class="metric-change down">▼ 0.8%</span>
-        </div>
-        <div class="metric-value">2.1%</div>
-        <div class="metric-chart">
-          <div class="bar" style="height:100%;opacity:0.3"></div>
-          <div class="bar" style="height:90%;opacity:0.3"></div>
-          <div class="bar" style="height:85%;opacity:0.3"></div>
-          <div class="bar" style="height:70%;opacity:0.3"></div>
-          <div class="bar" style="height:65%;opacity:0.3"></div>
-          <div class="bar" style="height:55%;opacity:0.4"></div>
-          <div class="bar" style="height:50%;opacity:0.4"></div>
-          <div class="bar" style="height:40%;opacity:0.5"></div>
-          <div class="bar" style="height:35%;opacity:0.6"></div>
-          <div class="bar" style="height:25%;opacity:0.7"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-sep"></div>
-
-<!-- ======== TECH STACK ======== -->
-<section id="tech">
-  <div class="container">
-    <div class="section-header fade-in">
-      <span class="section-tag">Technology Stack</span>
-      <h2 class="section-title">Built on a <span class="accent">Modern</span><br>Microservices Foundation</h2>
-      <p class="section-desc">Scalable, cloud-native architecture designed for millions of concurrent streams with auto-scaling and multi-region CDN.</p>
-      <div class="divider"></div>
-    </div>
-    <div class="tech-grid fade-in">
-      <div class="tech-item">
-        <span class="tech-icon">⚛️</span>
-        <div class="tech-info"><div class="tech-name">React / Next.js</div><div class="tech-role">Frontend · Web</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">🦋</span>
-        <div class="tech-info"><div class="tech-name">Flutter</div><div class="tech-role">Mobile · TV Apps</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">🟢</span>
-        <div class="tech-info"><div class="tech-name">Node.js</div><div class="tech-role">Backend · API</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">🐹</span>
-        <div class="tech-info"><div class="tech-name">Go</div><div class="tech-role">Streaming Service</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">🐍</span>
-        <div class="tech-info"><div class="tech-name">Python</div><div class="tech-role">AI / ML Engine</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">🐘</span>
-        <div class="tech-info"><div class="tech-name">PostgreSQL</div><div class="tech-role">Primary Database</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">🔴</span>
-        <div class="tech-info"><div class="tech-name">Redis</div><div class="tech-role">Cache · Sessions</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">🔍</span>
-        <div class="tech-info"><div class="tech-name">Elasticsearch</div><div class="tech-role">Search · Discovery</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">📡</span>
-        <div class="tech-info"><div class="tech-name">NGINX RTMP</div><div class="tech-role">Stream Ingest</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">☁️</span>
-        <div class="tech-info"><div class="tech-name">AWS Media Services</div><div class="tech-role">Encoding · CDN</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">🔥</span>
-        <div class="tech-info"><div class="tech-name">Cloudflare</div><div class="tech-role">CDN · DDoS</div></div>
-      </div>
-      <div class="tech-item">
-        <span class="tech-icon">📊</span>
-        <div class="tech-info"><div class="tech-name">Prometheus + Grafana</div><div class="tech-role">Monitoring</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-sep"></div>
-
-<!-- ======== CTA ======== -->
-<section id="cta">
-  <div class="container">
-    <div class="cta-box fade-in">
-      <h2 class="cta-title">Ready to Launch Your<br><span style="color:var(--g4)">IPTV Platform?</span></h2>
-      <p class="cta-desc">Get started in minutes. No credit card required for your 14-day free trial. Deploy globally with one click.</p>
-      <div class="cta-actions">
-        <a href="#pricing" class="btn btn-primary btn-lg">▶ Start Free Trial</a>
-        <a href="#features" class="btn btn-ghost btn-lg">View Full Spec</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======== FOOTER ======== -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="#home" class="footer-logo">
-          <div class="nav-logo">
-            <div class="logo-icon" style="width:28px;height:28px;font-size:0.8rem;border-radius:8px;">▶</div>
-            Stream<span class="logo-verde">Verde</span>
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-label">Watch Time</span>
+            <span class="metric-change up">▲ 8.7%</span>
           </div>
-        </a>
-        <p class="footer-tagline">The complete cloud-native IPTV platform for operators, broadcasters, and content owners worldwide.</p>
-        <div class="footer-social">
-          <a href="#" class="social-btn" title="Twitter/X">𝕏</a>
-          <a href="#" class="social-btn" title="GitHub">⌥</a>
-          <a href="#" class="social-btn" title="Discord">◈</a>
-          <a href="#" class="social-btn" title="LinkedIn">in</a>
+          <div class="metric-value">2.4M hrs</div>
+          <div class="metric-chart">
+            <div class="bar" style="height:50%"></div>
+            <div class="bar" style="height:65%"></div>
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:80%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:90%"></div>
+            <div class="bar" style="height:85%"></div>
+            <div class="bar" style="height:75%"></div>
+            <div class="bar" style="height:95%"></div>
+            <div class="bar" style="height:100%"></div>
+          </div>
+        </div>
+
+        <div class="chart-area">
+          <div class="chart-header">
+            <div class="chart-title">Monthly Revenue &amp; Subscriptions</div>
+            <div class="chart-tabs">
+              <button class="chart-tab active">Revenue</button>
+              <button class="chart-tab">Users</button>
+              <button class="chart-tab">Streams</button>
+            </div>
+          </div>
+          <div class="chart-svg-wrap">
+            <svg class="line-chart" viewBox="0 0 800 120" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#00ff87" stop-opacity="0.2" />
+                  <stop offset="100%" stop-color="#00ff87" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <path class="chart-area-fill"
+                d="M0,100 L80,85 L160,75 L240,65 L320,60 L400,45 L480,38 L560,25 L640,20 L720,15 L800,8 L800,120 L0,120 Z" />
+              <path class="chart-line"
+                d="M0,100 L80,85 L160,75 L240,65 L320,60 L400,45 L480,38 L560,25 L640,20 L720,15 L800,8" />
+              <circle class="chart-dot" cx="0" cy="100" r="4" />
+              <circle class="chart-dot" cx="80" cy="85" r="4" />
+              <circle class="chart-dot" cx="160" cy="75" r="4" />
+              <circle class="chart-dot" cx="240" cy="65" r="4" />
+              <circle class="chart-dot" cx="320" cy="60" r="4" />
+              <circle class="chart-dot" cx="400" cy="45" r="4" />
+              <circle class="chart-dot" cx="480" cy="38" r="4" />
+              <circle class="chart-dot" cx="560" cy="25" r="4" />
+              <circle class="chart-dot" cx="640" cy="20" r="4" />
+              <circle class="chart-dot" cx="720" cy="15" r="4" />
+              <circle class="chart-dot" cx="800" cy="8" r="4" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-label">Revenue</span>
+            <span class="metric-change up">▲ 21.3%</span>
+          </div>
+          <div class="metric-value">$182K</div>
+          <div class="metric-chart">
+            <div class="bar" style="height:35%"></div>
+            <div class="bar" style="height:50%"></div>
+            <div class="bar" style="height:60%"></div>
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:75%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:85%"></div>
+            <div class="bar" style="height:90%"></div>
+            <div class="bar" style="height:88%"></div>
+            <div class="bar" style="height:100%"></div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-label">Churn Rate</span>
+            <span class="metric-change down">▼ 0.8%</span>
+          </div>
+          <div class="metric-value">2.1%</div>
+          <div class="metric-chart">
+            <div class="bar" style="height:100%;opacity:0.3"></div>
+            <div class="bar" style="height:90%;opacity:0.3"></div>
+            <div class="bar" style="height:85%;opacity:0.3"></div>
+            <div class="bar" style="height:70%;opacity:0.3"></div>
+            <div class="bar" style="height:65%;opacity:0.3"></div>
+            <div class="bar" style="height:55%;opacity:0.4"></div>
+            <div class="bar" style="height:50%;opacity:0.4"></div>
+            <div class="bar" style="height:40%;opacity:0.5"></div>
+            <div class="bar" style="height:35%;opacity:0.6"></div>
+            <div class="bar" style="height:25%;opacity:0.7"></div>
+          </div>
         </div>
       </div>
-      <div>
-        <div class="footer-col-title">Platform</div>
-        <ul class="footer-links">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#channels">Live TV</a></li>
-          <li><a href="#vod">VOD</a></li>
-          <li><a href="#analytics">Analytics</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-        </ul>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- ======== TECH STACK ======== -->
+  <section id="tech">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Technology Stack</span>
+        <h2 class="section-title">Built on a <span class="accent">Modern</span><br>Microservices Foundation</h2>
+        <p class="section-desc">Scalable, cloud-native architecture designed for millions of concurrent streams with
+          auto-scaling and multi-region CDN.</p>
+        <div class="divider"></div>
       </div>
-      <div>
-        <div class="footer-col-title">Developers</div>
-        <ul class="footer-links">
-          <li><a href="#">REST API</a></li>
-          <li><a href="#">GraphQL API</a></li>
-          <li><a href="#">WebSocket API</a></li>
-          <li><a href="#">SDK Docs</a></li>
-          <li><a href="#">Changelog</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Company</div>
-        <ul class="footer-links">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Status</a></li>
-        </ul>
+      <div class="tech-grid fade-in">
+        <div class="tech-item">
+          <span class="tech-icon">⚛️</span>
+          <div class="tech-info">
+            <div class="tech-name">React / Next.js</div>
+            <div class="tech-role">Frontend · Web</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">🦋</span>
+          <div class="tech-info">
+            <div class="tech-name">Flutter</div>
+            <div class="tech-role">Mobile · TV Apps</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">🟢</span>
+          <div class="tech-info">
+            <div class="tech-name">Node.js</div>
+            <div class="tech-role">Backend · API</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">🐹</span>
+          <div class="tech-info">
+            <div class="tech-name">Go</div>
+            <div class="tech-role">Streaming Service</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">🐍</span>
+          <div class="tech-info">
+            <div class="tech-name">Python</div>
+            <div class="tech-role">AI / ML Engine</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">🐘</span>
+          <div class="tech-info">
+            <div class="tech-name">PostgreSQL</div>
+            <div class="tech-role">Primary Database</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">🔴</span>
+          <div class="tech-info">
+            <div class="tech-name">Redis</div>
+            <div class="tech-role">Cache · Sessions</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">🔍</span>
+          <div class="tech-info">
+            <div class="tech-name">Elasticsearch</div>
+            <div class="tech-role">Search · Discovery</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">📡</span>
+          <div class="tech-info">
+            <div class="tech-name">NGINX RTMP</div>
+            <div class="tech-role">Stream Ingest</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">☁️</span>
+          <div class="tech-info">
+            <div class="tech-name">AWS Media Services</div>
+            <div class="tech-role">Encoding · CDN</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">🔥</span>
+          <div class="tech-info">
+            <div class="tech-name">Cloudflare</div>
+            <div class="tech-role">CDN · DDoS</div>
+          </div>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon">📊</span>
+          <div class="tech-info">
+            <div class="tech-name">Prometheus + Grafana</div>
+            <div class="tech-role">Monitoring</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 StreamVerde. All rights reserved.</span>
-      <div class="footer-bottom-right">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- ======== CTA ======== -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-box fade-in">
+        <h2 class="cta-title">Ready to Launch Your<br><span style="color:var(--g4)">IPTV Platform?</span></h2>
+        <p class="cta-desc">Get started in minutes. No credit card required for your 14-day free trial. Deploy globally
+          with one click.</p>
+        <div class="cta-actions">
+          <a href="#pricing" class="btn btn-primary btn-lg">▶ Start Free Trial</a>
+          <a href="#features" class="btn btn-ghost btn-lg">View Full Spec</a>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#home" class="footer-logo">
+            <div class="nav-logo">
+              <div class="logo-icon" style="width:28px;height:28px;font-size:0.8rem;border-radius:8px;">▶</div>
+              Stream<span class="logo-verde">Verde</span>
+            </div>
+          </a>
+          <p class="footer-tagline">The complete cloud-native IPTV platform for operators, broadcasters, and content
+            owners worldwide.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" title="Twitter/X">𝕏</a>
+            <a href="#" class="social-btn" title="GitHub">⌥</a>
+            <a href="#" class="social-btn" title="Discord">◈</a>
+            <a href="#" class="social-btn" title="LinkedIn">in</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Platform</div>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#channels">Live TV</a></li>
+            <li><a href="#vod">VOD</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Developers</div>
+          <ul class="footer-links">
+            <li><a href="#">REST API</a></li>
+            <li><a href="#">GraphQL API</a></li>
+            <li><a href="#">WebSocket API</a></li>
+            <li><a href="#">SDK Docs</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 StreamVerde. All rights reserved.</span>
+        <div class="footer-bottom-right">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Scripts -->
   <script src="../shared/js/utils.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
