@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamVerde — Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --g0:#000d07;--g1:#001a0f;--g2:#002e1a;--g3:#00422a;--g4:#00ff87;--g5:#39ffb0;--g6:#7bffd4;--g7:#b0ffe6;
+      --glow:rgba(0,255,135,.18);--glow2:rgba(0,255,135,.07);
+      --red:#ff4757;--yellow:#ffd32a;--blue:#3ae0ff;
+      --text:#e8fff6;--text-dim:#7ab89a;--text-muted:#3a6b52;
+      --surface:rgba(0,26,15,.9);--surface2:rgba(0,46,26,.6);
+      --border:rgba(0,255,135,.10);--border2:rgba(0,255,135,.22);
+      --radius:14px;--radius-sm:8px;--radius-xs:6px;
+      --font-display:'Syne',sans-serif;--font-body:'Manrope',sans-serif;--font-mono:'JetBrains Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--g0);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;min-height:100vh;overflow-x:hidden}
+    a,a:link,a:visited,a:active{color:var(--g4);text-decoration:none}
+    a:hover{color:var(--g5);text-decoration:underline}
+    ::-webkit-scrollbar{width:5px;height:5px}
+    ::-webkit-scrollbar-track{background:var(--g1)}
+    ::-webkit-scrollbar-thumb{background:var(--g3);border-radius:3px}
+
+    /* DS Layout */
+    .ds-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
+    .ds-hero{text-align:center;padding:3rem 1rem 2.5rem;margin-bottom:2rem;border-bottom:1px solid var(--border2)}
+    .ds-hero h1{font-family:var(--font-display);font-size:2.2rem;font-weight:800;letter-spacing:-1px;margin-bottom:.3rem}
+    .ds-hero h1 span{color:var(--g4)}
+    .ds-hero p{color:var(--text-dim);font-size:.9rem;max-width:550px;margin:0 auto}
+    .ds-hero .version{display:inline-block;font-family:var(--font-mono);font-size:.7rem;color:var(--g4);background:rgba(0,255,135,.1);border:1px solid rgba(0,255,135,.2);padding:.15rem .6rem;border-radius:100px;margin-top:.75rem}
+
+    .ds-toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:2.5rem}
+    .ds-toc h3{font-family:var(--font-display);font-size:.9rem;font-weight:700;margin-bottom:.6rem}
+    .ds-toc ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.3rem .75rem}
+    .ds-toc li a{font-size:.82rem;color:var(--text-dim);transition:color .2s}
+    .ds-toc li a:hover{color:var(--g4);text-decoration:none}
+    .ds-toc li a::before{content:'→ ';color:var(--text-muted)}
+
+    .ds-section{margin-bottom:3rem}
+    .ds-section-title{font-family:var(--font-display);font-size:1.3rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.3rem;padding-bottom:.5rem;border-bottom:2px solid var(--g4);display:inline-block}
+    .ds-section-desc{color:var(--text-dim);font-size:.85rem;margin-bottom:1.25rem}
+    .ds-sub{font-family:var(--font-display);font-size:.95rem;font-weight:700;margin:1.5rem 0 .75rem}
+
+    .ds-note{background:rgba(0,255,135,.06);border:1px solid rgba(0,255,135,.15);border-radius:var(--radius-sm);padding:.75rem 1rem;margin:.75rem 0;font-size:.8rem;color:var(--text-dim);line-height:1.5}
+    .ds-note strong{color:var(--g4)}
+    .ds-note.warn{background:rgba(255,211,42,.06);border-color:rgba(255,211,42,.2)}
+    .ds-note.warn strong{color:var(--yellow)}
+
+    .ds-code{background:rgba(0,0,0,.4);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.75rem 1rem;font-family:var(--font-mono);font-size:.75rem;color:var(--g5);overflow-x:auto;margin:.5rem 0;line-height:1.7;white-space:pre}
+    .ds-code .ck{color:var(--text-muted)}
+    .ds-code .cv{color:var(--g4)}
+    .ds-code .cp{color:var(--blue)}
+
+    .ds-grid{display:grid;gap:1rem}
+    .ds-grid-2{grid-template-columns:1fr 1fr}
+    .ds-grid-3{grid-template-columns:1fr 1fr 1fr}
+    .ds-grid-4{grid-template-columns:repeat(4,1fr)}
+    @media(max-width:768px){.ds-grid-2,.ds-grid-3,.ds-grid-4{grid-template-columns:1fr 1fr}}
+    @media(max-width:480px){.ds-grid-2,.ds-grid-3,.ds-grid-4{grid-template-columns:1fr}}
+
+    /* Color swatches */
+    .swatch{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border)}
+    .swatch-color{height:72px;position:relative}
+    .swatch-info{padding:.6rem .75rem;background:var(--surface)}
+    .swatch-name{font-size:.78rem;font-weight:700;margin-bottom:.1rem}
+    .swatch-val{font-family:var(--font-mono);font-size:.68rem;color:var(--text-muted)}
+
+    /* Typography specimens */
+    .type-row{display:flex;align-items:baseline;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--border)}
+    .type-label{font-family:var(--font-mono);font-size:.68rem;color:var(--text-muted);width:110px;flex-shrink:0}
+    .type-sample{flex:1}
+
+    /* Spacing demo */
+    .space-row{display:flex;align-items:center;gap:1rem;margin-bottom:.4rem}
+    .space-bar{height:16px;background:linear-gradient(90deg,var(--g4),var(--g3));border-radius:3px;opacity:.6}
+    .space-label{font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted);width:80px;flex-shrink:0}
+    .space-val{font-family:var(--font-mono);font-size:.68rem;color:var(--text-dim);width:60px;flex-shrink:0}
+
+    /* Component demo cards */
+    .demo-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;transition:all .25s}
+    .demo-card:hover{border-color:var(--border2)}
+    .demo-label{font-family:var(--font-mono);font-size:.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.1rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .25s;border:none;font-family:var(--font-body)}
+    .btn-primary{background:linear-gradient(135deg,var(--g4),var(--g5));color:#000d07;box-shadow:0 0 15px var(--glow2)}
+    .btn-ghost{background:transparent;color:var(--text-dim);border:1px solid var(--border2)}
+    .btn-danger{background:rgba(255,71,87,.1);color:var(--red);border:1px solid rgba(255,71,87,.2)}
+    .btn-xs{padding:.25rem .55rem;border-radius:6px;font-size:.7rem;font-weight:600;cursor:pointer;border:none;font-family:var(--font-mono)}
+    .btn-xs-edit{background:rgba(0,255,135,.1);color:var(--g4);border:1px solid rgba(0,255,135,.2)}
+    .btn-xs-del{background:rgba(255,71,87,.1);color:var(--red);border:1px solid rgba(255,71,87,.2)}
+    .btn-xs-view{background:rgba(58,224,255,.1);color:var(--blue);border:1px solid rgba(58,224,255,.2)}
+
+    /* Tags */
+    .tag{font-size:.68rem;font-family:var(--font-mono);padding:.15rem .45rem;border-radius:4px;font-weight:600;display:inline-block}
+    .tag-g{background:rgba(0,255,135,.1);color:var(--g4);border:1px solid rgba(0,255,135,.2)}
+    .tag-r{background:rgba(255,71,87,.1);color:var(--red);border:1px solid rgba(255,71,87,.2)}
+    .tag-y{background:rgba(255,211,42,.1);color:var(--yellow);border:1px solid rgba(255,211,42,.2)}
+    .tag-b{background:rgba(58,224,255,.1);color:var(--blue);border:1px solid rgba(58,224,255,.2)}
+
+    /* Status labels */
+    .td-label{font-family:var(--font-mono);font-size:.68rem;padding:.2rem .5rem;border-radius:100px;font-weight:600;display:inline-block}
+    .td-active{background:rgba(0,255,135,.12);color:var(--g4);border:1px solid rgba(0,255,135,.25)}
+    .td-inactive{background:rgba(255,255,255,.05);color:var(--text-muted);border:1px solid var(--border)}
+    .td-pending{background:rgba(255,211,42,.12);color:var(--yellow);border:1px solid rgba(255,211,42,.25)}
+    .td-expired{background:rgba(255,71,87,.12);color:var(--red);border:1px solid rgba(255,71,87,.2)}
+    .td-live{background:rgba(255,71,87,.15);color:var(--red);border:1px solid rgba(255,71,87,.25)}
+
+    /* Toggle */
+    .toggle{width:40px;height:22px;border-radius:100px;background:var(--g3);cursor:pointer;position:relative;border:none;display:inline-block}
+    .toggle::after{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;top:3px;left:3px;transition:transform .3s}
+    .toggle.on{background:var(--g4)}
+    .toggle.on::after{transform:translateX(18px)}
+
+    /* Progress */
+    .progress-bar{height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+    .progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--g4),var(--g5))}
+
+    /* Form inputs */
+    .form-input{width:100%;padding:.55rem .85rem;border-radius:var(--radius-sm);border:1px solid var(--border2);background:rgba(0,0,0,.35);color:var(--text);font-size:.85rem;font-family:var(--font-body);outline:none;transition:border-color .2s}
+    .form-input:focus{border-color:var(--g4);box-shadow:0 0 0 3px var(--glow2)}
+    .form-label{display:block;font-size:.78rem;font-weight:600;color:var(--text-dim);margin-bottom:.3rem}
+
+    /* Stat card */
+    .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;position:relative;overflow:hidden}
+    .stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--g4),transparent);opacity:0;transition:opacity .3s}
+    .stat-card:hover::after{opacity:1}
+    .sc-label{font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .sc-val{font-family:var(--font-display);font-size:1.6rem;font-weight:800;line-height:1;margin-bottom:.3rem}
+    .sc-change{font-size:.72rem;font-family:var(--font-mono)}
+    .sc-icon{position:absolute;top:1rem;right:1rem;font-size:1.4rem;opacity:.35}
+
+    /* Card */
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
+    .card-pad{padding:1.25rem}
+
+    /* Table demo */
+    .table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    thead tr{background:rgba(0,0,0,.35)}
+    th{padding:.7rem 1rem;text-align:left;font-size:.7rem;font-family:var(--font-mono);font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+    td{padding:.65rem 1rem;font-size:.82rem;border-top:1px solid var(--border)}
+
+    /* Avatar */
+    .avatar-sm{width:28px;height:28px;border-radius:8px;background:var(--g2);display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;border:1px solid var(--border);vertical-align:middle;margin-right:.4rem}
+
+    /* Flex helpers for demo */
+    .flex-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+
+    /* Z-index table */
+    .z-table{width:100%}
+    .z-table td,.z-table th{padding:.5rem .75rem;font-size:.8rem}
+    .z-table td:first-child{font-family:var(--font-mono);color:var(--g4);font-size:.75rem}
+    .z-table td:last-child{font-family:var(--font-mono);color:var(--text-muted);font-size:.75rem}
+
+    /* File reference table */
+    .file-ref{width:100%}
+    .file-ref td{padding:.5rem .75rem;font-size:.8rem;vertical-align:top}
+    .file-ref td:first-child{font-family:var(--font-mono);color:var(--g4);font-size:.75rem;white-space:nowrap;width:220px}
+    .file-ref td:last-child{color:var(--text-dim)}
+  </style>
+</head>
+<body>
+<div class="ds-wrap">
+
+  <!-- HERO -->
+  <div class="ds-hero">
+    <h1>Stream<span>Verde</span> Design System</h1>
+    <p>The complete visual reference for building consistent, premium UI across the StreamVerde platform.</p>
+    <div class="version">v1.0 · March 2026</div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="ds-toc">
+    <h3>📋 Table of Contents</h3>
+    <ul>
+      <li><a href="#colors">Color Palette</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#spacing">Spacing Scale</a></li>
+      <li><a href="#borders">Borders &amp; Radius</a></li>
+      <li><a href="#zindex">Z-Index Scale</a></li>
+      <li><a href="#buttons">Buttons</a></li>
+      <li><a href="#tags">Tags &amp; Status Labels</a></li>
+      <li><a href="#forms">Form Inputs</a></li>
+      <li><a href="#cards">Cards &amp; Stat Cards</a></li>
+      <li><a href="#tables">Tables</a></li>
+      <li><a href="#toggles">Toggles &amp; Progress</a></li>
+      <li><a href="#layouts">Layout Grid</a></li>
+      <li><a href="#sidebar">Sidebar &amp; Topbar</a></li>
+      <li><a href="#modals">Modals</a></li>
+      <li><a href="#animations">Animations &amp; Effects</a></li>
+      <li><a href="#responsive">Responsive Breakpoints</a></li>
+      <li><a href="#files">File Reference</a></li>
+    </ul>
+  </div>
+
+  <!-- =========== SECTION: COLORS =========== -->
+  <div class="ds-section" id="colors">
+    <div class="ds-section-title">🎨 Color Palette</div>
+    <p class="ds-section-desc">StreamVerde uses a deep green-black palette with bright green accents. All colors are defined as CSS custom properties in <code>tokens.css</code>.</p>
+
+    <div class="ds-sub">Primary Palette (Green Scale)</div>
+    <div class="ds-grid ds-grid-4">
+      <div class="swatch"><div class="swatch-color" style="background:#000d07"></div><div class="swatch-info"><div class="swatch-name">g0 — Base</div><div class="swatch-val">#000d07 · var(--g0)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#001a0f"></div><div class="swatch-info"><div class="swatch-name">g1 — Dark</div><div class="swatch-val">#001a0f · var(--g1)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#002e1a"></div><div class="swatch-info"><div class="swatch-name">g2 — Deep</div><div class="swatch-val">#002e1a · var(--g2)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#00422a"></div><div class="swatch-info"><div class="swatch-name">g3 — Medium</div><div class="swatch-val">#00422a · var(--g3)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#00ff87"></div><div class="swatch-info"><div class="swatch-name">g4 — Accent ★</div><div class="swatch-val">#00ff87 · var(--g4)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#39ffb0"></div><div class="swatch-info"><div class="swatch-name">g5 — Accent Light</div><div class="swatch-val">#39ffb0 · var(--g5)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#7bffd4"></div><div class="swatch-info"><div class="swatch-name">g6 — Soft</div><div class="swatch-val">#7bffd4 · var(--g6)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#b0ffe6"></div><div class="swatch-info"><div class="swatch-name">g7 — Lightest</div><div class="swatch-val">#b0ffe6 · var(--g7)</div></div></div>
+    </div>
+
+    <div class="ds-sub">Semantic Colors</div>
+    <div class="ds-grid ds-grid-3">
+      <div class="swatch"><div class="swatch-color" style="background:#ff4757"></div><div class="swatch-info"><div class="swatch-name">Red — Error/Danger</div><div class="swatch-val">#ff4757 · var(--red)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#ffd32a"></div><div class="swatch-info"><div class="swatch-name">Yellow — Warning</div><div class="swatch-val">#ffd32a · var(--yellow)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#3ae0ff"></div><div class="swatch-info"><div class="swatch-name">Blue — Info</div><div class="swatch-val">#3ae0ff · var(--blue)</div></div></div>
+    </div>
+
+    <div class="ds-sub">Text Colors</div>
+    <div class="ds-grid ds-grid-3">
+      <div class="swatch"><div class="swatch-color" style="background:#e8fff6"></div><div class="swatch-info"><div class="swatch-name">Text — Primary</div><div class="swatch-val">#e8fff6 · var(--text)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#7ab89a"></div><div class="swatch-info"><div class="swatch-name">Text Dim — Secondary</div><div class="swatch-val">#7ab89a · var(--text-dim)</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#3a6b52"></div><div class="swatch-info"><div class="swatch-name">Text Muted — Tertiary</div><div class="swatch-val">#3a6b52 · var(--text-muted)</div></div></div>
+    </div>
+
+    <div class="ds-sub">Glow &amp; Surface Colors</div>
+    <div class="ds-note">
+      <strong>Glow:</strong> rgba(0,255,135,0.18) · <strong>Glow2:</strong> rgba(0,255,135,0.07)<br>
+      <strong>Surface:</strong> rgba(0,26,15,0.9) · <strong>Surface2:</strong> rgba(0,46,26,0.6)<br>
+      <strong>Border:</strong> rgba(0,255,135,0.10) · <strong>Border2:</strong> rgba(0,255,135,0.22)
+    </div>
+
+    <div class="ds-note warn">
+      <strong>Usage Rule:</strong> Always use CSS variables (e.g. <code>var(--g4)</code>) instead of raw hex values. This ensures consistency and allows future theme updates from a single source.
+    </div>
+  </div>
+
+  <!-- =========== SECTION: TYPOGRAPHY =========== -->
+  <div class="ds-section" id="typography">
+    <div class="ds-section-title">🔤 Typography</div>
+    <p class="ds-section-desc">Three font families serve distinct purposes. All loaded from Google Fonts.</p>
+
+    <div class="ds-sub">Font Families</div>
+    <div class="ds-code"><span class="ck">/* Display */</span>  --font-display: <span class="cv">'Syne'</span>, sans-serif;       <span class="ck">/* Headings, titles, hero text */</span>
+<span class="ck">/* Body    */</span>  --font-body:    <span class="cv">'Manrope'</span>, sans-serif;    <span class="ck">/* All body text, labels, paragraphs */</span>
+<span class="ck">/* Mono    */</span>  --font-mono:    <span class="cv">'JetBrains Mono'</span>, monospace; <span class="ck">/* Code, data, tags, badges, meta */</span></div>
+
+    <div class="ds-sub">Type Scale</div>
+    <div class="type-row"><div class="type-label">Hero / h1</div><div class="type-sample" style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:-.5px">StreamVerde IPTV</div></div>
+    <div class="type-row"><div class="type-label">h2 Banner</div><div class="type-sample" style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;letter-spacing:-.5px">Good Evening, Alex 👋</div></div>
+    <div class="type-row"><div class="type-label">Section Title</div><div class="type-sample" style="font-family:var(--font-display);font-size:.95rem;font-weight:700">▶ Continue Watching</div></div>
+    <div class="type-row"><div class="type-label">Body (15px)</div><div class="type-sample">Your personalized stream is ready and waiting.</div></div>
+    <div class="type-row"><div class="type-label">Small (.85rem)</div><div class="type-sample" style="font-size:.85rem;color:var(--text-dim)">500+ channels streaming live right now</div></div>
+    <div class="type-row"><div class="type-label">Label (mono)</div><div class="type-sample" style="font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600">TOTAL REVENUE</div></div>
+    <div class="type-row"><div class="type-label">Meta (mono)</div><div class="type-sample" style="font-family:var(--font-mono);font-size:.68rem;color:var(--text-muted)">CH 001 · HD · English</div></div>
+    <div class="type-row"><div class="type-label">Data Value</div><div class="type-sample" style="font-family:var(--font-display);font-size:1.6rem;font-weight:800;line-height:1">2,847</div></div>
+
+    <div class="ds-note">
+      <strong>Rule:</strong> Use <code>font-display</code> only for headings and stat values. Never use it for body text. Use <code>font-mono</code> for badges, tags, labels, meta info, and data.
+    </div>
+  </div>
+
+  <!-- =========== SECTION: SPACING =========== -->
+  <div class="ds-section" id="spacing">
+    <div class="ds-section-title">📏 Spacing Scale</div>
+    <p class="ds-section-desc">A consistent 4px-based spacing scale drives all margins, padding, and gaps.</p>
+
+    <div class="space-row"><div class="space-label">--space-1</div><div class="space-bar" style="width:16px"></div><div class="space-val">0.25rem</div></div>
+    <div class="space-row"><div class="space-label">--space-2</div><div class="space-bar" style="width:32px"></div><div class="space-val">0.5rem</div></div>
+    <div class="space-row"><div class="space-label">--space-3</div><div class="space-bar" style="width:48px"></div><div class="space-val">0.75rem</div></div>
+    <div class="space-row"><div class="space-label">--space-4</div><div class="space-bar" style="width:64px"></div><div class="space-val">1rem</div></div>
+    <div class="space-row"><div class="space-label">--space-5</div><div class="space-bar" style="width:80px"></div><div class="space-val">1.25rem</div></div>
+    <div class="space-row"><div class="space-label">--space-6</div><div class="space-bar" style="width:96px"></div><div class="space-val">1.5rem</div></div>
+    <div class="space-row"><div class="space-label">--space-8</div><div class="space-bar" style="width:128px"></div><div class="space-val">2rem</div></div>
+    <div class="space-row"><div class="space-label">--space-10</div><div class="space-bar" style="width:160px"></div><div class="space-val">2.5rem</div></div>
+    <div class="space-row"><div class="space-label">--space-12</div><div class="space-bar" style="width:192px"></div><div class="space-val">3rem</div></div>
+  </div>
+
+  <!-- =========== SECTION: BORDERS =========== -->
+  <div class="ds-section" id="borders">
+    <div class="ds-section-title">🔲 Borders &amp; Radius</div>
+    <p class="ds-section-desc">Two border intensities and three radius sizes to create the layered glass-like aesthetic.</p>
+
+    <div class="ds-grid ds-grid-3">
+      <div class="demo-card">
+        <div class="demo-label">--radius (14px)</div>
+        <div style="width:80px;height:80px;border:2px solid var(--g4);border-radius:14px;margin:0 auto"></div>
+        <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:.5rem">Cards, modals, panels</p>
+      </div>
+      <div class="demo-card">
+        <div class="demo-label">--radius-sm (8px)</div>
+        <div style="width:80px;height:80px;border:2px solid var(--g4);border-radius:8px;margin:0 auto"></div>
+        <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:.5rem">Buttons, inputs, nav items</p>
+      </div>
+      <div class="demo-card">
+        <div class="demo-label">--radius-xs (6px)</div>
+        <div style="width:80px;height:80px;border:2px solid var(--g4);border-radius:6px;margin:0 auto"></div>
+        <p style="font-size:.75rem;color:var(--text-muted);text-align:center;margin-top:.5rem">Tiny action buttons, tags</p>
+      </div>
+    </div>
+
+    <div class="ds-note">
+      <strong>Border tokens:</strong> <code>--border</code> (10% opacity) for subtle dividers, <code>--border2</code> (22% opacity) for hover states and emphasis. Both use rgba(0,255,135,x).
+    </div>
+  </div>
+
+  <!-- =========== SECTION: Z-INDEX =========== -->
+  <div class="ds-section" id="zindex">
+    <div class="ds-section-title">📐 Z-Index Scale</div>
+    <p class="ds-section-desc">Structured z-index layering prevents stacking conflicts.</p>
+
+    <div class="table-wrap">
+      <table class="z-table">
+        <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>--z-base</td><td>1</td><td>Default element layering</td></tr>
+          <tr><td>--z-nav</td><td>100</td><td>Topbar, sticky headers</td></tr>
+          <tr><td>--z-sidebar</td><td>200</td><td>Sidebar &amp; overlay</td></tr>
+          <tr><td>--z-notif</td><td>300</td><td>Notification panel</td></tr>
+          <tr><td>--z-modal</td><td>500</td><td>Modals &amp; dialogs</td></tr>
+          <tr><td>--z-noise</td><td>9999</td><td>Decorative noise textures</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- =========== SECTION: BUTTONS =========== -->
+  <div class="ds-section" id="buttons">
+    <div class="ds-section-title">🔘 Buttons</div>
+    <p class="ds-section-desc">Three primary button variants plus small action buttons for table rows.</p>
+
+    <div class="ds-sub">Primary Variants</div>
+    <div class="flex-row" style="margin-bottom:1.25rem">
+      <button class="btn btn-primary">Primary Button</button>
+      <button class="btn btn-ghost">Ghost Button</button>
+      <button class="btn btn-danger">Danger Button</button>
+    </div>
+
+    <div class="ds-code">.btn-primary  → Green gradient, dark text, glow shadow
+.btn-ghost    → Transparent bg, border, dim text → hover: green border
+.btn-danger   → Red tinted bg, red text, red border</div>
+
+    <div class="ds-sub">Action Buttons (Table Rows)</div>
+    <div class="flex-row" style="margin-bottom:1rem">
+      <button class="btn-xs btn-xs-edit">✏ Edit</button>
+      <button class="btn-xs btn-xs-view">👁 View</button>
+      <button class="btn-xs btn-xs-del">🗑 Delete</button>
+    </div>
+
+    <div class="ds-note">
+      <strong>Spec:</strong> .btn uses <code>var(--radius-sm)</code> (8px) radius, <code>var(--font-body)</code>. Action buttons (.btn-xs) use <code>var(--font-mono)</code> and 6px radius. All buttons have <code>transition: all .25s ease</code>.
+    </div>
+  </div>
+
+  <!-- =========== SECTION: TAGS =========== -->
+  <div class="ds-section" id="tags">
+    <div class="ds-section-title">🏷️ Tags &amp; Status Labels</div>
+    <p class="ds-section-desc">Two systems: Tags for inline labels, Status Labels for table cell statuses.</p>
+
+    <div class="ds-sub">Tags</div>
+    <div class="flex-row" style="margin-bottom:1.25rem">
+      <span class="tag tag-g">Pro Plan</span>
+      <span class="tag tag-b">4 Devices</span>
+      <span class="tag tag-y">100GB DVR</span>
+      <span class="tag tag-r">Expired</span>
+    </div>
+    <div class="ds-code">.tag-g  → Green  (success, active, features)
+.tag-b  → Blue   (info, devices, counts)
+.tag-y  → Yellow (warnings, limits, DVR)
+.tag-r  → Red    (errors, expired, critical)</div>
+
+    <div class="ds-sub">Status Labels (Table Cells)</div>
+    <div class="flex-row" style="margin-bottom:1rem">
+      <span class="td-label td-active">Active</span>
+      <span class="td-label td-pending">Pending</span>
+      <span class="td-label td-inactive">Inactive</span>
+      <span class="td-label td-expired">Expired</span>
+      <span class="td-label td-live">LIVE</span>
+    </div>
+
+    <div class="ds-note">
+      <strong>Difference:</strong> Tags use <code>border-radius: 4px</code> (square-ish). Status labels use <code>border-radius: 100px</code> (pill shape). Both use <code>var(--font-mono)</code> at <code>.68rem</code>.
+    </div>
+  </div>
+
+  <!-- =========== SECTION: FORMS =========== -->
+  <div class="ds-section" id="forms">
+    <div class="ds-section-title">📝 Form Inputs</div>
+    <p class="ds-section-desc">Consistent dark-field inputs with green glow focus states.</p>
+
+    <div class="ds-grid ds-grid-2">
+      <div>
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" placeholder="you@example.com">
+      </div>
+      <div>
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" placeholder="••••••••">
+      </div>
+    </div>
+
+    <div class="ds-code" style="margin-top:1rem">Background:  rgba(0,0,0,0.35)
+Border:      var(--border2) — 1px solid
+Radius:      var(--radius-sm) — 8px
+Focus:       border-color → var(--g4), box-shadow → 0 0 0 3px var(--glow2)
+Font:        var(--font-body), .85rem
+Padding:     .55rem .85rem</div>
+  </div>
+
+  <!-- =========== SECTION: CARDS =========== -->
+  <div class="ds-section" id="cards">
+    <div class="ds-section-title">📦 Cards &amp; Stat Cards</div>
+    <p class="ds-section-desc">Two card types: generic content card and stat/metric card.</p>
+
+    <div class="ds-sub">Generic Card</div>
+    <div class="card card-pad" style="margin-bottom:1.25rem">
+      <p style="font-size:.85rem">This is a <code>.card .card-pad</code> — used for content sections, settings panels, and data containers.</p>
+    </div>
+    <div class="ds-code">Background: var(--surface) — rgba(0,26,15,0.9)
+Border:     var(--border) → hover: var(--border2)
+Radius:     var(--radius) — 14px
+Padding:    .card-pad adds 1.25rem
+Transition: all .25s ease</div>
+
+    <div class="ds-sub">Stat Cards</div>
+    <div class="ds-grid ds-grid-3" style="margin-bottom:1rem">
+      <div class="stat-card">
+        <div class="sc-icon">👥</div>
+        <div class="sc-label">Total Users</div>
+        <div class="sc-val">2,847</div>
+        <div class="sc-change" style="color:var(--g4)">↑ 12.5%</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-icon">💰</div>
+        <div class="sc-label">Revenue</div>
+        <div class="sc-val">$48.2K</div>
+        <div class="sc-change" style="color:var(--g4)">↑ 8.3%</div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-icon">📡</div>
+        <div class="sc-label">Active Streams</div>
+        <div class="sc-val">1,293</div>
+        <div class="sc-change" style="color:var(--red)">↓ 2.1%</div>
+      </div>
+    </div>
+
+    <div class="ds-note">
+      <strong>Stat card hover effect:</strong> Green gradient line fades in at top (<code>::after</code> pseudo-element), card lifts 2px. Use <code>.stats-grid</code> (auto-fit, minmax 170px) for layout.
+    </div>
+  </div>
+
+  <!-- =========== SECTION: TABLES =========== -->
+  <div class="ds-section" id="tables">
+    <div class="ds-section-title">📊 Tables</div>
+    <p class="ds-section-desc">Data tables with dark header, subtle row hover, and inline status labels.</p>
+
+    <div class="table-wrap" style="margin-bottom:1rem">
+      <table>
+        <thead><tr><th>User</th><th>Plan</th><th>Status</th><th>Joined</th></tr></thead>
+        <tbody>
+          <tr><td><span class="avatar-sm">👤</span> Alex Green</td><td>Pro</td><td><span class="td-label td-active">Active</span></td><td style="font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted)">2025-12-01</td></tr>
+          <tr><td><span class="avatar-sm">👤</span> Maria Santos</td><td>Basic</td><td><span class="td-label td-pending">Pending</span></td><td style="font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted)">2026-01-15</td></tr>
+          <tr><td><span class="avatar-sm">🏢</span> TeleOp Ltd</td><td>Enterprise</td><td><span class="td-label td-active">Active</span></td><td style="font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted)">2024-06-20</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-code">Header:     background rgba(0,0,0,.35), mono font, uppercase
+Row hover:  rgba(0,255,135,.02) highlight
+Border:     1px solid var(--border) between rows
+Font sizes: th .7rem (mono), td .82rem (body)
+Wrap:       .table-wrap provides overflow-x:auto + radius</div>
+  </div>
+
+  <!-- =========== SECTION: TOGGLES =========== -->
+  <div class="ds-section" id="toggles">
+    <div class="ds-section-title">🎚️ Toggles &amp; Progress Bars</div>
+
+    <div class="ds-sub">Toggle Switch</div>
+    <div class="flex-row" style="margin-bottom:1.25rem">
+      <span style="font-size:.85rem;color:var(--text-dim)">Off:</span> <div class="toggle"></div>
+      <span style="font-size:.85rem;color:var(--text-dim);margin-left:1rem">On:</span> <div class="toggle on"></div>
+    </div>
+    <div class="ds-code">Size:    40×22px, pill shape (border-radius: 100px)
+Off:     background var(--g3) — dark green
+On:      background var(--g4) — bright green, knob slides right
+Knob:    16×16px white circle, transition .3s
+Class:   .toggle + .toggle.on</div>
+
+    <div class="ds-sub">Progress Bars</div>
+    <div style="max-width:400px;margin-bottom:1rem">
+      <p style="font-size:.78rem;color:var(--text-dim);margin-bottom:.3rem">Default (green)</p>
+      <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+      <p style="font-size:.78rem;color:var(--text-dim);margin:.5rem 0 .3rem">Red variant</p>
+      <div class="progress-bar"><div class="progress-fill" style="width:40%;background:linear-gradient(90deg,var(--red),#ff8a80)"></div></div>
+      <p style="font-size:.78rem;color:var(--text-dim);margin:.5rem 0 .3rem">Yellow variant</p>
+      <div class="progress-bar"><div class="progress-fill" style="width:80%;background:linear-gradient(90deg,var(--yellow),#ffe082)"></div></div>
+    </div>
+
+    <div class="ds-code">Height:      5px
+Track:       rgba(255,255,255,.07), radius 3px
+Fill:        linear-gradient(90deg, var(--g4), var(--g5))
+Variants:    .progress-fill-r (red), .progress-fill-y (yellow)
+Transition:  width .6s ease</div>
+  </div>
+
+  <!-- =========== SECTION: LAYOUTS =========== -->
+  <div class="ds-section" id="layouts">
+    <div class="ds-section-title">🧱 Layout Grid</div>
+    <p class="ds-section-desc">Utility grid classes for common page layouts.</p>
+
+    <div class="ds-code">.two-col    → 1fr 1fr           <span class="ck">/* Two equal columns */</span>
+.three-col  → 1fr 1fr 1fr       <span class="ck">/* Three equal columns */</span>
+.main-aside → 1fr 320px         <span class="ck">/* Content + sidebar panel */</span>
+.stats-grid → auto-fit 170px+   <span class="ck">/* Responsive stat cards */</span>
+
+<span class="ck">/* All use gap: 1rem */</span></div>
+
+    <div class="ds-note">
+      <strong>Sidebar dimensions:</strong> <code>--sidebar-width: 240px</code> (expanded), <code>60px</code> (collapsed icon rail).<br>
+      <strong>Topbar height:</strong> <code>--topbar-height: 58px</code>. Main content is offset by sidebar width via <code>margin-left</code>.
+    </div>
+  </div>
+
+  <!-- =========== SECTION: SIDEBAR =========== -->
+  <div class="ds-section" id="sidebar">
+    <div class="ds-section-title">📱 Sidebar &amp; Topbar Specs</div>
+    <p class="ds-section-desc">The app shell consists of a fixed sidebar and a sticky topbar.</p>
+
+    <div class="ds-sub">Sidebar</div>
+    <div class="ds-code">Width:       var(--sidebar-width) → 240px
+Collapsed:   60px icon rail (body.sidebar-collapsed)
+Background:  rgba(0, 8, 4, .95)
+Border:      1px solid var(--border) — right edge
+Z-index:     var(--z-sidebar) → 200
+Transition:  width .3s cubic-bezier(.25,.46,.45,.94)
+
+Nav item:    .6rem .75rem padding, radius-sm, hover → surface2
+Active:      rgba(0,255,135,.1) bg + 2px left green border
+Tooltip:     collapsed → ::after tooltip on hover (data-label attr)
+Badges:      .badge (red pill) / .badge-g (green outlined pill)</div>
+
+    <div class="ds-sub">Topbar</div>
+    <div class="ds-code">Height:      var(--topbar-height) → 58px
+Background:  rgba(0, 6, 3, .9)
+Blur:        backdrop-filter: blur(20px)
+Position:    sticky top:0, z-index var(--z-nav)
+Border:      1px solid var(--border) — bottom edge
+
+Components:  hamburger | title | search bar | notif btn | avatar</div>
+
+    <div class="ds-note">
+      <strong>Collapse behavior:</strong> On desktop, <code>body.sidebar-collapsed</code> shrinks sidebar to 60px icon rail with hover tooltips. On mobile (≤768px), sidebar is an overlay that slides from left. Labels always visible on mobile even in "collapsed" state.
+    </div>
+  </div>
+
+  <!-- =========== SECTION: MODALS =========== -->
+  <div class="ds-section" id="modals">
+    <div class="ds-section-title">💬 Modals &amp; Overlays</div>
+
+    <div class="ds-code">Overlay:     position fixed, inset 0, rgba(0,0,0,.75)
+             backdrop-filter: blur(6px), z-index var(--z-modal)
+             opacity 0 → .open: opacity 1
+
+Modal box:   background #001208, border var(--border2)
+             max-width 480px, radius var(--radius)
+             padding 1.75rem, max-height 90vh, overflow-y auto
+             transform: translateY(20px) scale(.97) → open: none
+
+Components:  .modal-header (flex between, title + close)
+             .modal-form (flex column, gap .9rem)
+             .modal-actions (flex end, gap .75rem, border-top)</div>
+
+    <div class="ds-note">
+      <strong>Player modal</strong> uses max-width 640px, zero padding, black background with 16:9 aspect ratio player screen.
+    </div>
+  </div>
+
+  <!-- =========== SECTION: ANIMATIONS =========== -->
+  <div class="ds-section" id="animations">
+    <div class="ds-section-title">✨ Animations &amp; Effects</div>
+
+    <div class="ds-code"><span class="ck">/* Background orbs (ambient) */</span>
+@keyframes orbF { 0%,100% { translate(0,0) } 50% { translate(30px,-40px) } }
+<span class="ck">Orb-1:</span> 600px, rgba(0,255,135,.09) radial, top-left, blur 90px
+<span class="ck">Orb-2:</span> 500px, rgba(0,200,100,.06) radial, bottom-right, delay -10s
+
+<span class="ck">/* Live indicator pulse */</span>
+@keyframes livePulse { 0%,100% { opacity:1 } 50% { opacity:.6 } }
+<span class="ck">Duration:</span> 2s ease-in-out infinite
+
+<span class="ck">/* Player progress */</span>
+@keyframes playerProgress { 0% { width:0% } 100% { width:100% } }
+<span class="ck">Duration:</span> 30s linear infinite
+
+<span class="ck">/* Common transitions */</span>
+Cards:       all .25s ease  (border, transform, shadow)
+Nav items:   all .2s ease   (background, color)
+Sidebar:     .3s cubic-bezier(.25,.46,.45,.94)
+Modals:      .3s ease (opacity, transform)</div>
+
+    <div class="ds-note">
+      <strong>Hover effects:</strong> Media cards lift -4px + scale(1.02). Channel cards lift -3px + shadow. Stat cards lift -2px + top border glow. All links underline on hover.
+    </div>
+  </div>
+
+  <!-- =========== SECTION: RESPONSIVE =========== -->
+  <div class="ds-section" id="responsive">
+    <div class="ds-section-title">📱 Responsive Breakpoints</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Breakpoint</th><th>Target</th><th>Changes</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:var(--font-mono);color:var(--g4)">≤ 900px</td><td>Tablets</td><td>.two-col → 1fr, .three-col → 1fr 1fr, .main-aside → 1fr</td></tr>
+          <tr><td style="font-family:var(--font-mono);color:var(--g4)">≤ 768px</td><td>Mobile</td><td>Sidebar → overlay, topbar search hidden, stats-grid → 1fr 1fr, three-col → 1fr, notif-panel → full width</td></tr>
+          <tr><td style="font-family:var(--font-mono);color:var(--g4)">≤ 480px</td><td>Small Mobile</td><td>page-content padding → 1rem, topbar padding → 0 1rem, form-row → 1fr</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- =========== SECTION: FILE REFERENCE =========== -->
+  <div class="ds-section" id="files">
+    <div class="ds-section-title">📁 File Reference</div>
+    <p class="ds-section-desc">Complete map of all CSS and layout files in the project.</p>
+
+    <div class="table-wrap">
+      <table class="file-ref">
+        <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>shared/css/tokens.css</td><td>Design tokens (colors, fonts, spacing, borders, radius, z-index), global reset, global link color, scrollbar styles. <strong>Shared across website and app.</strong></td></tr>
+          <tr><td>app/css/auth.css</td><td>Login/signup card styles, auth tabs, role selector, social buttons, auth form layout.</td></tr>
+          <tr><td>app/css/shell.css</td><td>App shell: sidebar (expanded/collapsed/mobile), topbar, main area layout, notification panel, hamburger, all responsive shell behavior.</td></tr>
+          <tr><td>app/css/components.css</td><td>Reusable UI components: cards, stat cards, tables, buttons, tags, status labels, avatars, toggles, modals, upload zones, progress bars, bar charts, settings rows, layout grids.</td></tr>
+          <tr><td>app/css/pages.css</td><td>Page-specific styles: hero banner, media cards, channel cards, EPG grid, search, profile, DVR, player overlay, background orbs, animations.</td></tr>
+          <tr><td>website/css/layout.css</td><td>Marketing website layout styles.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ds-note">
+      <strong>Import order matters:</strong> tokens.css → auth.css → shell.css → components.css → pages.css. Tokens must always load first as all other files reference its custom properties.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem">
+    <p style="font-family:var(--font-display);font-weight:700;font-size:.9rem">Stream<span style="color:var(--g4)">Verde</span> Design System</p>
+    <p style="font-family:var(--font-mono);font-size:.7rem;color:var(--text-muted);margin-top:.25rem">Last updated: March 2026 · All specs derived from production CSS</p>
+  </div>
+
+</div>
+</body>
+</html>
