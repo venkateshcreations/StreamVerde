@@ -39,3 +39,16 @@ node_modules/
 # Temporary
 *.tmp
 *.temp
+
+# Debug / E2E screenshots
+debug_*.png
+e2e-*.png
+
+# Temp HTML
+tmp_*.html
+
+# One-off download scripts
+download_*.js
+
+# Generated/placeholder images
+website/assets/images/generated/

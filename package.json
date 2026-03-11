@@ -1,0 +1,27 @@
+{
+  "name": "streamverde",
+  "version": "1.0.0",
+  "description": "> A cloud-native OTT/IPTV platform delivering Live TV, VOD, Catch-up TV, Cloud DVR, AI-powered recommendations, and full operator management. Built as a complete SaaS/OTT/Middleware solution.",
+  "main": "serve.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venkateshcreations/StreamVerde.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/venkateshcreations/StreamVerde/issues"
+  },
+  "homepage": "https://github.com/venkateshcreations/StreamVerde#readme",
+  "devDependencies": {
+    "playwright": "^1.58.2"
+  }
+}

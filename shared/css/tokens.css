@@ -98,6 +98,13 @@ input, select, textarea, button {
   font-family: var(--font-body);
 }
 
+/* ── Global link color ── */
+a,
+a:link,
+a:visited,
+a:active { color: var(--g4); text-decoration: none; }
+a:hover   { color: var(--g5); text-decoration: underline; }
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar       { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--g1); }

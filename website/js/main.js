@@ -40,6 +40,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (group) {
         group.querySelectorAll('.filter-btn, .chart-tab').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
+
+        // VOD Filtering Logic
+        if (this.classList.contains('filter-btn') && group.classList.contains('vod-filters')) {
+          const filter = this.innerText.toLowerCase();
+          const cards = document.querySelectorAll('.vod-card');
+
+          cards.forEach(card => {
+            const meta = card.querySelector('.vod-meta').innerText.toLowerCase();
+            let isMatch = false;
+
+            if (filter === 'all' || filter === 'movies') {
+              isMatch = true; // All current demo cards are movies
+            } else if (filter === 'series' || filter === 'documentaries') {
+              isMatch = false; // No demo cards for these categories
+            } else {
+              if (meta.includes(filter)) isMatch = true;
+            }
+
+            card.style.display = isMatch ? 'block' : 'none';
+          });
+        }
       }
     });
   });

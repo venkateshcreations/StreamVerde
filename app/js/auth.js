@@ -1,32 +1,87 @@
 /**
  * StreamVerde App — Authentication
  * app/js/auth.js
+ *
+ * Roles:
+ *   superadmin   → full admin platform
+ *   operator     → platform management (no advertising)
+ *   contentmgr   → content & channels only
+ *   reseller     → users, billing, analytics
+ *   subscriber   → viewer / watch mode
  */
 
 'use strict';
 
+/* ── Role definitions ────────────────────────────────────────── */
+const ROLES = {
+  superadmin: {
+    name:   'Super Admin',
+    role:   'Super Admin',
+    avatar: '🔐',
+    navId:  'nav-superadmin',
+    home:   'admin-dashboard',
+  },
+  operator: {
+    name:   'Operator',
+    role:   'Operator',
+    avatar: '🏢',
+    navId:  'nav-operator',
+    home:   'admin-dashboard',
+  },
+  contentmgr: {
+    name:   'Content Manager',
+    role:   'Content Mgr',
+    avatar: '🎬',
+    navId:  'nav-contentmgr',
+    home:   'admin-vod',
+  },
+  reseller: {
+    name:   'Reseller',
+    role:   'Reseller',
+    avatar: '🤝',
+    navId:  'nav-reseller',
+    home:   'admin-dashboard',
+  },
+  subscriber: {
+    name:   'Alex Green',
+    role:   'Subscriber',
+    avatar: '👤',
+    navId:  'nav-subscriber',
+    home:   'home',
+  },
+};
+
+/* ── Detect role from email (demo heuristic) ──── */
+function detectRole (email) {
+  if (email.includes('admin'))   return 'superadmin';
+  if (email.includes('operator')) return 'operator';
+  if (email.includes('content'))  return 'contentmgr';
+  if (email.includes('reseller')) return 'reseller';
+  return 'subscriber';
+}
+
+/* ── All nav IDs for hiding ───────────────────── */
+const ALL_NAV_IDS = [
+  'nav-subscriber',
+  'nav-superadmin',
+  'nav-operator',
+  'nav-contentmgr',
+  'nav-reseller',
+];
+
 window.Auth = {
 
   init () {
-    // Tab switches
     document.querySelectorAll('.auth-tab').forEach(tab => {
       tab.addEventListener('click', () => this.switchTab(tab.dataset.tab));
     });
-
-    // Role selector
     document.querySelectorAll('.role-opt').forEach(opt => {
       opt.addEventListener('click', () => this.selectRole(opt));
     });
-
-    // Sign-in form
     const signinForm = document.getElementById('signinForm');
     if (signinForm) signinForm.addEventListener('submit', e => { e.preventDefault(); this.login(); });
-
-    // Sign-up form
     const signupForm = document.getElementById('signupForm');
     if (signupForm) signupForm.addEventListener('submit', e => { e.preventDefault(); this.register(); });
-
-    // Social buttons
     document.querySelectorAll('.btn-social').forEach(btn => {
       btn.addEventListener('click', () => this.login('social'));
     });
@@ -46,40 +101,73 @@ window.Auth = {
   },
 
   login (method = 'email') {
-    const emailEl    = document.getElementById('login-email');
-    const email      = emailEl ? emailEl.value.trim() : 'user@example.com';
-    const isAdmin    = email.includes('admin') || email.includes('operator');
+    const emailEl = document.getElementById('login-email');
+    const email   = emailEl ? emailEl.value.trim() : 'user@example.com';
+    const roleKey = detectRole(email);
+    const def     = ROLES[roleKey];
 
     App.state.isLoggedIn = true;
-    App.state.isAdmin    = isAdmin;
-
-    if (isAdmin) {
-      App.state.user = { id: 'USR-0001', name: 'Super Admin', email, role: 'Super Admin', plan: 'Enterprise', avatar: '🔐' };
-    } else {
-      App.state.user = { id: 'USR-0291', name: 'Alex Green',  email, role: 'Subscriber',  plan: 'Pro',        avatar: '👤' };
-    }
+    App.state.roleKey    = roleKey;
+    App.state.isAdmin    = (roleKey !== 'subscriber');
+    App.state.user       = {
+      id:     'USR-0001',
+      name:   def.name,
+      email,
+      role:   def.role,
+      plan:   roleKey === 'subscriber' ? 'Pro' : 'Enterprise',
+      avatar: def.avatar,
+    };
 
     this._applyUser();
-    this._showApp(isAdmin);
+    this._showNav(def.navId);
+    this._updateSwitchBtn();
+    this._showApp(def.home);
   },
 
   register () {
-    // Treat registration same as subscriber login for demo
+    const def = ROLES['subscriber'];
     App.state.isLoggedIn = true;
+    App.state.roleKey    = 'subscriber';
     App.state.isAdmin    = false;
-    App.state.user = { id: 'USR-0300', name: 'New User', email: 'new@example.com', role: 'Subscriber', plan: 'Basic', avatar: '👤' };
+    App.state.user = {
+      id: 'USR-0300', name: 'New User',
+      email: 'new@example.com', role: def.role, plan: 'Basic', avatar: def.avatar,
+    };
     this._applyUser();
-    this._showApp(false);
+    this._showNav(def.navId);
+    this._updateSwitchBtn();
+    this._showApp(def.home);
   },
 
   logout () {
     App.state.isLoggedIn = false;
     App.state.isAdmin    = false;
+    App.state.roleKey    = 'subscriber';
     document.getElementById('app-view').classList.remove('active');
     document.getElementById('auth-view').classList.add('active');
-    // Reset to subscriber nav
-    this._setNavMode(false);
+    this._showNav('nav-subscriber');
   },
+
+  /* Toggle between current role's nav and subscriber (demo switch btn) */
+  toggleAdminMode () {
+    const roleKey = App.state.roleKey || 'subscriber';
+    if (App.state.isAdmin) {
+      // Switch to subscriber view
+      App.state._prevRoleKey = roleKey;
+      App.state.isAdmin = false;
+      this._showNav('nav-subscriber');
+      Router.goto('home');
+    } else {
+      // Switch back to original role
+      const prev = App.state._prevRoleKey || 'superadmin';
+      App.state.isAdmin = true;
+      this._showNav(ROLES[prev].navId);
+      Router.goto(ROLES[prev].home);
+    }
+    this._updateSwitchBtn();
+  },
+
+  /* ── Private helpers ── */
 
   _applyUser () {
     const u = App.state.user;
@@ -87,42 +175,38 @@ window.Auth = {
       const el = document.getElementById(id);
       if (el) el.textContent = u.name;
     });
-    ['sidebarRole'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = u.role;
-    });
+    const roleEl = document.getElementById('sidebarRole');
+    if (roleEl) roleEl.textContent = u.role;
     ['sidebarAvatar', 'topbarAvatar'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.textContent = u.avatar;
     });
   },
 
-  _showApp (isAdmin) {
+  _showNav (navId) {
+    ALL_NAV_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    const target = document.getElementById(navId);
+    if (target) target.style.display = 'flex';
+  },
+
+  _updateSwitchBtn () {
+    const btn = document.getElementById('switchBtn');
+    if (btn) btn.textContent = App.state.isAdmin ? 'USER' : 'ADMIN';
+  },
+
+  _showApp (homePage) {
     document.getElementById('auth-view').classList.remove('active');
     document.getElementById('app-view').classList.add('active');
-    this._setNavMode(isAdmin);
-    Router.goto(isAdmin ? 'admin-dashboard' : 'home');
-  },
-
-  _setNavMode (isAdmin) {
-    const subNav   = document.getElementById('subscriber-nav');
-    const adminNav = document.getElementById('admin-nav');
-    const switchBtn = document.getElementById('switchBtn');
-    if (subNav)    subNav.style.display   = isAdmin ? 'none' : 'flex';
-    if (adminNav)  adminNav.style.display = isAdmin ? 'flex' : 'none';
-    if (switchBtn) switchBtn.textContent  = isAdmin ? 'USER' : 'ADMIN';
-  },
-
-  toggleAdminMode () {
-    App.state.isAdmin = !App.state.isAdmin;
-    this._setNavMode(App.state.isAdmin);
-    Router.goto(App.state.isAdmin ? 'admin-dashboard' : 'home');
+    Router.goto(homePage);
   },
 };
 
-// Expose globals for inline onclick compatibility
-window.doLogin   = () => Auth.login();
-window.doLogout  = () => Auth.logout();
-window.switchTab = (t) => Auth.switchTab(t);
-window.selectRole= (el) => Auth.selectRole(el);
+/* ── Global shims ── */
+window.doLogin         = () => Auth.login();
+window.doLogout        = () => Auth.logout();
+window.switchTab       = (t) => Auth.switchTab(t);
+window.selectRole      = (el) => Auth.selectRole(el);
 window.toggleAdminMode = () => Auth.toggleAdminMode();
