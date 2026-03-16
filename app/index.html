@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="StreamVerde IPTV App — Stream live TV, movies, series and manage your account.">
   <title>StreamVerde — App</title>
+  <link rel="icon" href="../shared/favicon.svg" type="image/svg+xml">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,8 +61,8 @@
       <!-- SIGN IN FORM -->
       <div class="auth-card" id="signin-card">
         <div class="auth-tabs">
-          <button class="auth-tab active" onclick="switchTab('signin')">Sign In</button>
-          <button class="auth-tab" onclick="switchTab('signup')">Create Account</button>
+          <button type="button" class="auth-tab active" data-tab="signin" onclick="switchTab('signin')">Sign In</button>
+          <button type="button" class="auth-tab" data-tab="signup" onclick="switchTab('signup')">Create Account</button>
         </div>
         <div class="auth-form">
           <div class="form-group">
@@ -89,15 +90,15 @@
         </div>
       </div>
 
-      <!-- SIGN UP FORM -->
+      <!-- CREATE ACCOUNT FORM (same style & theme as Sign In) -->
       <div class="auth-card" id="signup-card" style="display:none">
         <div class="auth-tabs">
-          <button class="auth-tab" onclick="switchTab('signin')">Sign In</button>
-          <button class="auth-tab active" onclick="switchTab('signup')">Create Account</button>
+          <button type="button" class="auth-tab" data-tab="signin" onclick="switchTab('signin')">Sign In</button>
+          <button type="button" class="auth-tab active" data-tab="signup" onclick="switchTab('signup')">Create Account</button>
         </div>
         <div class="auth-form">
-          <div>
-            <div class="form-label" style="margin-bottom:.5rem">Account Type</div>
+          <div class="form-group">
+            <label class="form-label">Account Type</label>
             <div class="role-selector">
               <div class="role-opt selected" onclick="selectRole(this)">👤 Subscriber</div>
               <div class="role-opt" onclick="selectRole(this)">🏢 Operator</div>
@@ -186,6 +187,7 @@
         <div class="nav-section-label">Watch</div>
         <button class="nav-item active" data-label="Home" onclick="navTo('home',this)"><span class="ni">🏠</span><span class="nav-item-label">Home</span></button>
         <button class="nav-item" data-label="Live TV" onclick="navTo('live',this)"><span class="ni">📡</span><span class="nav-item-label">Live TV</span><span class="badge">LIVE</span></button>
+        <button class="nav-item" data-label="TV Player" onclick="navTo('tv-player',this)"><span class="ni">▶</span><span class="nav-item-label">TV Player</span></button>
         <button class="nav-item" data-label="EPG Guide" onclick="navTo('epg',this)"><span class="ni">📅</span><span class="nav-item-label">EPG Guide</span></button>
         <button class="nav-item" data-label="Movies" onclick="navTo('movies',this)"><span class="ni">🎬</span><span class="nav-item-label">Movies</span></button>
         <button class="nav-item" data-label="Series" onclick="navTo('series',this)"><span class="ni">📺</span><span class="nav-item-label">Series</span></button>
@@ -653,6 +655,37 @@
                 <div class="channel-info-name">F1 Racing Live</div>
                 <div class="channel-info-prog">Bahrain Grand Prix</div>
                 <div class="channel-info-meta">CH 060 · 4K</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ TV PLAYER PAGE ═══ -->
+        <div class="page" id="page-tv-player">
+          <div class="tv-player-layout">
+            <div class="tv-player-video-wrap">
+              <video id="tvPlayerVideo" class="tv-player-video" controls playsinline></video>
+              <div id="tvPlayerPlaceholder" class="tv-player-placeholder">
+                <span class="tv-player-placeholder-icon">▶</span>
+                <p>Select a channel to start watching</p>
+                <p class="tv-player-placeholder-hint">Channels load from the IPTV playlist on the right</p>
+              </div>
+              <div id="tvPlayerError" class="tv-player-error" style="display:none"></div>
+              <div class="tv-player-now-playing" id="tvPlayerNowPlaying"></div>
+            </div>
+            <div class="tv-player-sidebar">
+              <div class="tv-player-sidebar-header">
+                <h2>Channels</h2>
+                <div class="tv-player-source">
+                  <input type="text" id="tvPlayerM3uUrl" class="form-input tv-player-url-input" placeholder="M3U playlist URL" value="https://iptv-org.github.io/iptv/index.m3u">
+                  <button type="button" class="btn btn-primary tv-player-load-btn" id="tvPlayerLoadBtn">Load</button>
+                </div>
+                <div class="tv-player-filter-wrap">
+                  <input type="text" id="tvPlayerFilter" class="form-input tv-player-filter-input" placeholder="Filter by name or group...">
+                </div>
+              </div>
+              <div id="tvPlayerChannelList" class="tv-player-channel-list">
+                <div class="tv-player-loading" id="tvPlayerChannelLoading">Loading playlist…</div>
               </div>
             </div>
           </div>
@@ -2394,12 +2427,16 @@
 
   <!-- Shared utilities -->
   <script src="../shared/js/utils.js"></script>
+  <!-- HLS.js for live stream playback -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7"></script>
 
   <!-- App scripts (order matters) -->
+  <script src="js/m3u.js"></script>
   <script src="js/router.js"></script>
   <script src="js/sidebar.js"></script>
   <script src="js/notifications.js"></script>
   <script src="js/player.js"></script>
+  <script src="js/tv-player.js"></script>
   <script src="js/modals.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/app.js"></script>

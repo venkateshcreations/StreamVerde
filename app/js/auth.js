@@ -88,10 +88,14 @@ window.Auth = {
   },
 
   switchTab (tab) {
-    document.getElementById('signin-card').style.display = tab === 'signin' ? '' : 'none';
-    document.getElementById('signup-card').style.display = tab === 'signup' ? '' : 'none';
+    if (tab !== 'signin' && tab !== 'signup') return;
+    const signinCard = document.getElementById('signin-card');
+    const signupCard = document.getElementById('signup-card');
+    if (signinCard) signinCard.style.display = tab === 'signin' ? 'block' : 'none';
+    if (signupCard) signupCard.style.display = tab === 'signup' ? 'block' : 'none';
     document.querySelectorAll('.auth-tab').forEach(t => {
-      t.classList.toggle('active', t.dataset.tab === tab);
+      const tabName = t.getAttribute('data-tab') || (t.textContent.trim().toLowerCase().includes('sign in') ? 'signin' : 'signup');
+      t.classList.toggle('active', tabName === tab);
     });
   },
 

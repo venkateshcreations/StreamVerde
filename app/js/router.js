@@ -10,6 +10,7 @@ window.Router = {
   PAGE_TITLES: {
     'home':              'Home',
     'live':              'Live TV',
+    'tv-player':         'TV Player',
     'epg':               'EPG Guide',
     'movies':            'Movies',
     'series':            'Series',

@@ -23,8 +23,12 @@
 
 .btn-primary {
   background: linear-gradient(135deg, var(--g4), var(--g5));
-  color: #000d07;
+  color: #000d07 !important;
+  font-weight: 700;
   box-shadow: 0 0 20px var(--glow), 0 2px 8px rgba(0,0,0,0.4);
+}
+a.btn-primary, a.btn-primary:link, a.btn-primary:visited, a.btn-primary:hover, a.btn-primary:active {
+  color: #000d07 !important;
 }
 .btn-primary:hover {
   transform: translateY(-1px);

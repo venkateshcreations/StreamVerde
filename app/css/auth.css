@@ -35,7 +35,7 @@
 
 /* ── Tabs ── */
 .auth-tabs { display: flex; gap: 0; margin-bottom: 1.75rem; background: rgba(0,0,0,0.3); border-radius: var(--radius-sm); padding: 4px; }
-.auth-tab { flex: 1; padding: .55rem; text-align: center; border-radius: 6px; cursor: pointer; font-size: .85rem; font-weight: 600; color: var(--text-muted); transition: all .25s ease; border: none; background: none; font-family: var(--font-b); }
+.auth-tab { flex: 1; padding: .55rem; text-align: center; border-radius: 6px; cursor: pointer; font-size: .85rem; font-weight: 600; color: var(--text-muted); transition: all .25s ease; border: none; background: none; font-family: var(--font-body); }
 .auth-tab.active { background: var(--g2); color: var(--g4); box-shadow: 0 0 15px var(--glow2); }
 
 /* ── Form ── */
